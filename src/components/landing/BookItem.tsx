@@ -32,7 +32,7 @@ export function BookItem({
   active,
   freeRibbon = false,
   logoLabel,
-  animMode = "all",
+  animMode = "loop",
   dominoTriggered = false,
   ribbonDropped = false,
 }: BookItemProps) {

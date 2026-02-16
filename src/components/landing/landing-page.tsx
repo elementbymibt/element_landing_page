@@ -7,6 +7,7 @@ import { BeforeAfterSlider } from "@/src/components/landing/BeforeAfterSlider";
 import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
 import { EmotionalTriggerSection } from "@/src/components/landing/EmotionalTriggerSection";
+import { FloatingSocialButtons } from "@/src/components/landing/FloatingSocialButtons";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { MicroSocialProofToast } from "@/src/components/landing/MicroSocialProofToast";
 import { OfferBook } from "@/src/components/landing/OfferBook";
@@ -34,16 +35,18 @@ export function LandingPage() {
       <UrgencyTopStrip />
       <StickyCTA />
       <MicroSocialProofToast />
+      <FloatingSocialButtons />
 
       <div className="relative pb-28 pt-24 sm:pt-28 md:pt-36">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_10%_4%,rgba(191,154,87,0.2),transparent_42%),radial-gradient(circle_at_88%_16%,rgba(114,67,56,0.2),transparent_40%)]" />
 
         <div className="mx-auto w-full max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
+          <EmotionalTriggerSection />
           <OfferBook />
           <PriceStackSection />
 
           <BookChapter
-            chapter="POGLAVLJE 04"
+            chapter="POGLAVLJE 05"
             title="Pre / Posle (primer)"
             subtitle="Jedan jasan primer transformacije: od skice rasporeda do render vizije prostora."
             left={
@@ -78,7 +81,8 @@ export function LandingPage() {
           <section className="relative overflow-hidden rounded-[2rem] border border-brand-book-edge/90 bg-[linear-gradient(145deg,#17120f_0%,#100e0c_52%,#17110f_100%)] shadow-[0_30px_70px_rgba(4,3,2,0.58)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(191,154,87,0.17),transparent_52%),radial-gradient(circle_at_50%_120%,rgba(0,0,0,0.48),transparent_65%)]" />
             <div className="relative z-10 p-5 sm:p-8 lg:p-10">
-              <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE 05</p>
+              <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE 06</p>
+
               <h2 className="font-display mt-3 text-3xl text-brand-paper sm:text-5xl">Video insert page</h2>
               <p className="text-brand-paper-muted mt-3 max-w-2xl text-sm leading-relaxed sm:text-base">
                 Kratak pregled pristupa i finalnih rezultata kroz jedan reprezentativan primer.
@@ -96,7 +100,7 @@ export function LandingPage() {
           </section>
 
           <BookChapter
-            chapter="POGLAVLJE 06"
+            chapter="POGLAVLJE 07"
             title="Social proof"
             subtitle="Preko 50+ idejnih projekata realizovano."
             left={
@@ -125,7 +129,7 @@ export function LandingPage() {
           />
 
           <BookChapter
-            chapter="POGLAVLJE 07"
+            chapter="POGLAVLJE 08"
             title="FAQ / Objections"
             left={
               <div className="space-y-3">
@@ -149,8 +153,6 @@ export function LandingPage() {
               </div>
             }
           />
-
-          <EmotionalTriggerSection />
 
           <ValueReminderBlock />
 

@@ -24,7 +24,7 @@ function modeEnabled(mode: AnimMode, expected: Exclude<AnimMode, "off">) {
 export function BonusStack({
   items,
   offerExpired = false,
-  animMode = "all",
+  animMode = "loop",
   dominoTriggered = false,
 }: BonusStackProps) {
   const [activeCount, setActiveCount] = useState(0);
@@ -74,13 +74,13 @@ export function BonusStack({
           return (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 24, rotateY: -18 }}
+              initial={{ opacity: 0, y: 18, rotateY: -10 }}
               animate={
                 shouldFall
                   ? { opacity: 1, y: 36, x: 14, rotateZ: 76, rotateY: -4 }
                   : active
-                    ? { opacity: 1, y: 0, x: 0, rotateY: -10, rotateZ: 0 }
-                    : { opacity: 0, y: 24, rotateY: -18 }
+                    ? { opacity: 1, y: 0, x: 0, rotateY: -3, rotateZ: 0 }
+                    : { opacity: 0, y: 18, rotateY: -10 }
               }
               transition={{
                 duration: shouldFall ? 0.5 : 0.4,

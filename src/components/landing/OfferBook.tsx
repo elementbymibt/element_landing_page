@@ -6,7 +6,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
-import { FollowElementLinks } from "@/src/components/landing/FollowElementLinks";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { heroVariantContent } from "@/src/data/landing-content";
 import { trackEvent } from "@/src/lib/analytics";
@@ -91,7 +90,7 @@ export function OfferBook() {
   return (
     <div className="space-y-10">
       <BookChapter
-        chapter="POGLAVLJE 01"
+        chapter="POGLAVLJE 02"
         title={selectedHeroCopy.headline}
         subtitle={messageMatch.subheadline}
         left={
@@ -135,7 +134,6 @@ export function OfferBook() {
               ))}
             </div>
 
-            <FollowElementLinks location="hero_follow" />
           </div>
         }
       />

@@ -10,7 +10,6 @@ import { BonusStack } from "@/src/components/landing/BonusStack";
 import { BookItem } from "@/src/components/landing/BookItem";
 import { BookingButton } from "@/src/components/landing/booking-button";
 import { CountUpValue } from "@/src/components/landing/CountUpValue";
-import { FollowElementLinks } from "@/src/components/landing/FollowElementLinks";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { PriceReveal, type PriceSlideState } from "@/src/components/landing/PriceReveal";
 import { trackEvent } from "@/src/lib/analytics";
@@ -130,7 +129,7 @@ function modeHas(mode: AnimMode, expected: Exclude<AnimMode, "off">) {
 
 export function PriceStackSection() {
   const ref = useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { amount: 0.25 });
+  const inView = useInView(ref, { amount: 0.1 });
   const reducedMotion = useReducedMotion();
   const searchParams = useSearchParams();
 
@@ -253,7 +252,16 @@ export function PriceStackSection() {
       return;
     }
 
-    let current = 0;
+    if (reducedMotion) {
+      setActiveCount(priceBooks.length);
+      setShowFormula(true);
+      setHasAnimated(true);
+      return;
+    }
+
+    let current = Math.min(2, priceBooks.length);
+    setActiveCount(current);
+
     const intervalId = window.setInterval(() => {
       current += 1;
       setActiveCount(current);
@@ -263,9 +271,9 @@ export function PriceStackSection() {
         window.setTimeout(() => {
           setShowFormula(true);
           setHasAnimated(true);
-        }, 180);
+        }, 120);
       }
-    }, 140);
+    }, 85);
 
     devLog("price_stack_start", {
       items: priceBooks.length,
@@ -273,7 +281,7 @@ export function PriceStackSection() {
     });
 
     return () => window.clearInterval(intervalId);
-  }, [inView, unlocked, hasAnimated]);
+  }, [hasAnimated, inView, reducedMotion, unlocked]);
 
   useEffect(() => {
     if (!unlocked || !inView || countdownViewedRef.current) {
@@ -346,7 +354,7 @@ export function PriceStackSection() {
   }, [soldOut, unlocked]);
 
   useEffect(() => {
-    if (!unlocked || !inView || slideState !== "idle") {
+    if (!unlocked || !inView || !hasAnimated || slideState !== "idle") {
       return;
     }
 
@@ -359,7 +367,7 @@ export function PriceStackSection() {
     }, 700);
 
     return () => window.clearTimeout(timeoutId);
-  }, [abVariant, inView, slideState, triggerPriceSlide, unlocked]);
+  }, [abVariant, hasAnimated, inView, slideState, triggerPriceSlide, unlocked]);
 
   useEffect(() => {
     if (!unlocked || slideState !== "idle" || abVariant !== "B3") {
@@ -494,7 +502,7 @@ export function PriceStackSection() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(201,163,93,0.18),transparent_44%),radial-gradient(circle_at_84%_20%,rgba(0,0,0,0.3),transparent_55%)]" />
 
         <div className="relative z-10">
-          <p className="text-brand-gold text-xs tracking-[0.28em] uppercase">POGLAVLJE 02 + 03</p>
+          <p className="text-brand-gold text-xs tracking-[0.28em] uppercase">POGLAVLJE 03 + 04</p>
           <h2 className="font-display mt-3 text-4xl leading-tight text-brand-paper sm:text-5xl">Kompletna vrednost projekta</h2>
           <p className="text-brand-paper-muted mt-3 text-sm leading-relaxed sm:text-base">
             Ovo je sve sto dobijate pre cene. Prikaz cene se otkljucava tek nakon unosa email adrese.
@@ -535,12 +543,20 @@ export function PriceStackSection() {
               {unlockError ? <p className="text-brand-rose mt-2 text-sm">{unlockError}</p> : null}
 
               <div className="mt-4 space-y-2 rounded-2xl border border-brand-gold/30 bg-brand-bordo/40 px-4 py-3 text-sm">
-                <p className="text-brand-paper">
-                  Specijalna cena vazi jos: <span className="text-brand-gold font-semibold">{countdown.days}</span> :{" "}
-                  <span className="text-brand-gold font-semibold">{countdown.hours}</span> :{" "}
-                  <span className="text-brand-gold font-semibold">{countdown.minutes}</span> :{" "}
-                  <span className="text-brand-gold font-semibold">{countdown.seconds}</span>
-                </p>
+                <p className="text-brand-paper">Specijalna cena vazi jos:</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {[
+                    { label: "DD", value: countdown.days },
+                    { label: "HH", value: countdown.hours },
+                    { label: "MM", value: countdown.minutes },
+                    { label: "SS", value: countdown.seconds },
+                  ].map((item) => (
+                    <div key={item.label} className="min-w-[52px] rounded-lg border border-brand-gold/40 bg-brand-ink/65 px-2 py-1 text-center">
+                      <p className="font-display text-brand-gold text-xl leading-none">{item.value}</p>
+                      <p className="text-brand-paper-muted text-[10px] tracking-[0.12em] uppercase">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
                 <p className="text-brand-paper-muted">
                   Preostalo jos: <span className="text-brand-gold font-semibold">{spotsLeft}</span> / {totalSpots} mesta.
                 </p>
@@ -558,9 +574,22 @@ export function PriceStackSection() {
                 }}
               >
                 <p className="text-brand-gold text-center text-xs tracking-[0.2em] uppercase">Specijalna cena vazi jos:</p>
-                <p className="font-display mt-2 text-center text-3xl text-brand-paper sm:text-4xl">
-                  {countdown.days} : {countdown.hours} : {countdown.minutes} : {countdown.seconds}
-                </p>
+                <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+                  {[
+                    { label: "DD", value: countdown.days },
+                    { label: "HH", value: countdown.hours },
+                    { label: "MM", value: countdown.minutes },
+                    { label: "SS", value: countdown.seconds },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="min-w-[68px] rounded-xl border border-brand-gold/42 bg-brand-ink/64 px-2 py-2 text-center sm:min-w-[74px]"
+                    >
+                      <p className="font-display text-brand-paper text-3xl leading-none sm:text-4xl">{item.value}</p>
+                      <p className="text-brand-paper-muted text-[10px] tracking-[0.14em] uppercase">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="mt-4 space-y-2">
                   <div className="flex items-center justify-between text-xs uppercase tracking-[0.14em]">
@@ -688,7 +717,7 @@ export function PriceStackSection() {
               </div>
 
               <div className="mt-6">
-                <ApartmentExample chapterLabel="POGLAVLJE 02 + 03 / PRIMER PROJEKTA" />
+                <ApartmentExample chapterLabel="POGLAVLJE 03 + 04 / PRIMER PROJEKTA" />
               </div>
 
               <div className="mt-7">
@@ -726,7 +755,6 @@ export function PriceStackSection() {
             Prvih 10 klijenata dobija specijalnu cenu 25€/m2. Nakon toga cena se vraca na 30€, a zatim 35€.
           </p>
 
-          <FollowElementLinks location="price_stack_follow" className="mx-auto mt-5 max-w-xl" />
         </div>
       </section>
     </>

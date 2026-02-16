@@ -34,6 +34,7 @@ export function EmotionalTriggerSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(201,163,93,0.14),transparent_46%)]" />
 
       <div className="relative z-10 space-y-3">
+        <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE 01</p>
         {lines.map((line, index) => (
           <motion.p
             key={line}
