@@ -18,6 +18,7 @@ import type {
 const STORE_PATH = process.env.VERCEL
   ? "/tmp/element-intakes.json"
   : path.join(process.cwd(), "data", "intakes.json");
+const INTAKE_FINAL_STEP = 12;
 
 type JsonStore = {
   intakes: Record<string, IntakeDraft>;
@@ -158,7 +159,7 @@ class JsonIntakeStore {
     const validated = toValidatedIntakeJson({
       ...current,
       status: "submitted",
-      currentStep: 3,
+      currentStep: INTAKE_FINAL_STEP,
       updatedAt: nowIso(),
     });
 
@@ -427,7 +428,7 @@ class PostgresIntakeStore {
       ...current,
       id,
       status: "submitted",
-      currentStep: 3,
+      currentStep: INTAKE_FINAL_STEP,
       updatedAt: nowIso(),
     });
 
@@ -455,14 +456,14 @@ class PostgresIntakeStore {
         UPDATE intakes
         SET
           status = 'submitted',
-          current_step = 3,
+          current_step = $4,
           draft_json = $2,
           intake_json = $2,
           contradictions = $3,
           updated_at = NOW()
         WHERE id = $1
       `,
-      [id, JSON.stringify(confirmedIntake), JSON.stringify(contradictions)],
+      [id, JSON.stringify(confirmedIntake), JSON.stringify(contradictions), INTAKE_FINAL_STEP],
     );
 
     await this.pool.query(

@@ -58,6 +58,7 @@ import {
 } from "@/src/lib/intake/types";
 
 const NUMBER_RE = /[^0-9.,-]/g;
+const INTAKE_STEP_MAX = 12;
 
 function sanitizeText(input: unknown) {
   return String(input ?? "").trim();
@@ -710,7 +711,7 @@ export function createDefaultIntakeDraft(
   return {
     id,
     status: ensureEnum(input.status, intakeStatusOptions, "draft"),
-    currentStep: Math.max(0, Math.min(3, toPositiveInt(input.currentStep, 0))),
+    currentStep: Math.max(0, Math.min(INTAKE_STEP_MAX, toPositiveInt(input.currentStep, 0))),
     client: {
       fullName: sanitizeText((input as IntakeDraft).client?.fullName).slice(0, 120),
       email: sanitizeText((input as IntakeDraft).client?.email).toLowerCase().slice(0, 180),
@@ -940,7 +941,7 @@ const IntakeAssetSchema = z.object({
 export const IntakeJsonSchema = z.object({
   id: z.string().uuid(),
   status: z.enum(intakeStatusOptions),
-  currentStep: z.number().int().min(0).max(3),
+  currentStep: z.number().int().min(0).max(INTAKE_STEP_MAX),
   client: z.object({
     fullName: z.string().min(1),
     email: z.string().email(),

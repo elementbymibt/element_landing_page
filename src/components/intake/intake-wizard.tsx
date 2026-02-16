@@ -169,6 +169,10 @@ function formatDateTime(input: string, locale: "sr" | "en") {
   }
 }
 
+function isEmailValid(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(value.trim());
+}
+
 function toggleValue<T extends string>(
   values: T[],
   value: T,
@@ -925,6 +929,41 @@ export function IntakeWizard({ initialIntake }: { initialIntake: IntakeDraft }) 
   );
 
   const handleSubmit = async () => {
+    if (!draft.client.fullName.trim()) {
+      setSubmitError(
+        tx("Unesite ime i prezime pre slanja upitnika.", "Please enter your full name before submitting."),
+      );
+      return;
+    }
+
+    if (!isEmailValid(draft.client.email)) {
+      setSubmitError(
+        tx("Unesite ispravnu email adresu pre slanja upitnika.", "Please enter a valid email before submitting."),
+      );
+      return;
+    }
+
+    if (draft.agreements.hasExactMeasurements === null) {
+      setSubmitError(
+        tx("Označite da li su mere tačne ili okvirne.", "Please mark whether your measurements are exact or approximate."),
+      );
+      return;
+    }
+
+    if (
+      !draft.agreements.understandsConceptConceptualOnly ||
+      !draft.agreements.understandsTwoRevisionsIncluded ||
+      !draft.agreements.privacyConsent
+    ) {
+      setSubmitError(
+        tx(
+          "Potvrdite sve obavezne saglasnosti pre slanja.",
+          "Please confirm all required agreements before submitting.",
+        ),
+      );
+      return;
+    }
+
     setSubmitting(true);
     setSubmitError("");
 
@@ -3348,6 +3387,166 @@ export function IntakeWizard({ initialIntake }: { initialIntake: IntakeDraft }) 
                     />
                   ))}
                 </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-brand-neutral-500/60 bg-brand-neutral-100 p-5">
+              <p className="text-brand-burgundy text-sm font-semibold">
+                {tx("Podaci za kontakt i potvrde", "Contact details and confirmations")}
+              </p>
+
+              <div className="mt-3 grid gap-3 md:grid-cols-3">
+                <div>
+                  <label className="text-brand-earth mb-1 block text-xs">
+                    {tx("Ime i prezime", "Full name")}
+                  </label>
+                  <input
+                    type="text"
+                    className="input-field"
+                    value={draft.client.fullName}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        client: {
+                          ...prev.client,
+                          fullName: event.target.value,
+                        },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="text-brand-earth mb-1 block text-xs">
+                    {tx("Email", "Email")}
+                  </label>
+                  <input
+                    type="email"
+                    className="input-field"
+                    value={draft.client.email}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        client: {
+                          ...prev.client,
+                          email: event.target.value.trim(),
+                        },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="text-brand-earth mb-1 block text-xs">
+                    {tx("Telefon (opciono)", "Phone (optional)")}
+                  </label>
+                  <input
+                    type="tel"
+                    className="input-field"
+                    value={draft.client.phone}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        client: {
+                          ...prev.client,
+                          phone: event.target.value,
+                        },
+                      }))
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-brand-earth text-xs">
+                  {tx("Da li su unete mere tačne?", "Are the entered measurements exact?")}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <SelectablePill
+                    active={draft.agreements.hasExactMeasurements === true}
+                    label={tx("Da, tačne su", "Yes, exact")}
+                    onClick={() =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        agreements: {
+                          ...prev.agreements,
+                          hasExactMeasurements: true,
+                        },
+                      }))
+                    }
+                  />
+                  <SelectablePill
+                    active={draft.agreements.hasExactMeasurements === false}
+                    label={tx("Ne, okvirne su", "No, approximate")}
+                    onClick={() =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        agreements: {
+                          ...prev.agreements,
+                          hasExactMeasurements: false,
+                        },
+                      }))
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 space-y-2">
+                <label className="text-brand-earth flex items-start gap-2 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={draft.agreements.understandsConceptConceptualOnly}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        agreements: {
+                          ...prev.agreements,
+                          understandsConceptConceptualOnly: event.target.checked,
+                        },
+                      }))
+                    }
+                  />
+                  {tx(
+                    "Razumem da je idejno rešenje konceptualni dokument.",
+                    "I understand the concept package is a conceptual document.",
+                  )}
+                </label>
+                <label className="text-brand-earth flex items-start gap-2 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={draft.agreements.understandsTwoRevisionsIncluded}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        agreements: {
+                          ...prev.agreements,
+                          understandsTwoRevisionsIncluded: event.target.checked,
+                        },
+                      }))
+                    }
+                  />
+                  {tx(
+                    "Razumem da su uključene 2 revizije.",
+                    "I understand that 2 revisions are included.",
+                  )}
+                </label>
+                <label className="text-brand-earth flex items-start gap-2 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={draft.agreements.privacyConsent}
+                    onChange={(event) =>
+                      updateDraft((prev) => ({
+                        ...prev,
+                        agreements: {
+                          ...prev.agreements,
+                          privacyConsent: event.target.checked,
+                        },
+                      }))
+                    }
+                  />
+                  {tx(
+                    "Saglasan/a sam sa obradom podataka radi izrade ponude.",
+                    "I consent to data processing for offer preparation.",
+                  )}
+                </label>
               </div>
             </div>
 

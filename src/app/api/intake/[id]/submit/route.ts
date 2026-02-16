@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 import { submitIntakeNotification } from "@/src/actions/intake";
 import { intakeStore } from "@/src/lib/intake/store";
@@ -10,6 +11,7 @@ type SubmitRequestBody = {
   confirmContradictions?: boolean;
   draft?: Partial<IntakeDraft>;
 };
+const INTAKE_FINAL_STEP = 12;
 
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -41,7 +43,7 @@ export async function POST(
     if (body.draft) {
       await intakeStore.saveDraft(id, {
         ...body.draft,
-        currentStep: 3,
+        currentStep: INTAKE_FINAL_STEP,
       });
     }
 
@@ -69,13 +71,31 @@ export async function POST(
       projectId,
       intake: result.intake,
       contradictions: result.contradictions,
-      redirectTo: `/thank-you?type=intake`,
+      redirectTo: `/booking?from=intake&id=${id}`,
     });
-  } catch {
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const message = error.issues[0]?.message ?? "Validacija nije uspela.";
+      return NextResponse.json(
+        {
+          status: "error",
+          message,
+          issues: error.issues.map((issue) => ({
+            path: issue.path.join("."),
+            message: issue.message,
+          })),
+        },
+        { status: 400 },
+      );
+    }
+
     return NextResponse.json(
       {
         status: "error",
-        message: "Nismo uspeli da završimo intake. Pokušajte ponovo.",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Nismo uspeli da završimo intake. Pokušajte ponovo.",
       },
       { status: 500 },
     );
