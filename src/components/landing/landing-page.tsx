@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
-import { ApartmentExample } from "@/src/components/landing/ApartmentExample";
 import { BeforeAfterSlider } from "@/src/components/landing/BeforeAfterSlider";
 import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
@@ -36,10 +35,9 @@ export function LandingPage() {
         <div className="mx-auto w-full max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
           <OfferBook />
           <PriceStackSection />
-          <ApartmentExample />
 
           <BookChapter
-            chapter="POGLAVLJE 04"
+            chapter="POGLAVLJE 03"
             title="Pre / Posle (primer)"
             subtitle="Jedan jasan primer transformacije: od skice rasporeda do render vizije prostora."
             left={
@@ -74,7 +72,7 @@ export function LandingPage() {
           <section className="relative overflow-hidden rounded-[2rem] border border-brand-book-edge/90 bg-[linear-gradient(145deg,#17120f_0%,#100e0c_52%,#17110f_100%)] shadow-[0_30px_70px_rgba(4,3,2,0.58)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(191,154,87,0.17),transparent_52%),radial-gradient(circle_at_50%_120%,rgba(0,0,0,0.48),transparent_65%)]" />
             <div className="relative z-10 p-5 sm:p-8 lg:p-10">
-              <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE 05</p>
+              <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE 04</p>
               <h2 className="font-display mt-3 text-3xl text-brand-paper sm:text-5xl">Video insert page</h2>
               <p className="text-brand-paper-muted mt-3 max-w-2xl text-sm leading-relaxed sm:text-base">
                 Kratak pregled pristupa i finalnih rezultata kroz jedan reprezentativan primer.
@@ -92,7 +90,7 @@ export function LandingPage() {
           </section>
 
           <BookChapter
-            chapter="POGLAVLJE 06"
+            chapter="POGLAVLJE 05"
             title="Social proof"
             subtitle="Preko 50+ idejnih projekata realizovano."
             left={
@@ -121,7 +119,7 @@ export function LandingPage() {
           />
 
           <BookChapter
-            chapter="POGLAVLJE 07"
+            chapter="POGLAVLJE 06"
             title="FAQ / Objections"
             left={
               <div className="space-y-3">

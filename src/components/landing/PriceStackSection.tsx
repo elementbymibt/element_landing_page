@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import { submitMicroleadAction } from "@/src/actions/microlead";
+import { ApartmentExample } from "@/src/components/landing/ApartmentExample";
 import { BonusStack } from "@/src/components/landing/BonusStack";
 import { BookItem } from "@/src/components/landing/BookItem";
 import { BookingButton } from "@/src/components/landing/booking-button";
@@ -164,7 +165,8 @@ export function PriceStackSection() {
             >
               <p className="text-brand-gold text-xs tracking-[0.2em] uppercase">Otkljucajte cenu</p>
               <p className="text-brand-paper mt-2 text-sm leading-relaxed sm:text-base">
-                Unesite email i kliknite na dugme. Tek tada prikazujemo cene 40 - 35 - 30 - 25 i bonus FREE knjizice.
+                Unesite email i kliknite na dugme. Tek tada prikazujemo cene 40 - 35 - 30 - 25, primer projekta i
+                bonus FREE knjizice.
               </p>
 
               <div className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -251,6 +253,10 @@ export function PriceStackSection() {
 
               <div className="mt-6">
                 <PriceReveal startValue={40} firstDropValue={35} secondDropValue={30} finalValue={25} />
+              </div>
+
+              <div className="mt-6">
+                <ApartmentExample chapterLabel="POGLAVLJE 02 / PRIMER PROJEKTA" />
               </div>
 
               <div className="mt-7">

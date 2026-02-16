@@ -16,7 +16,11 @@ const SPECIAL = 30 * SQM;
 const LIMITED = 25 * SQM;
 const TOTAL_SAVINGS = REGULAR - LIMITED;
 
-export function ApartmentExample() {
+type ApartmentExampleProps = {
+  chapterLabel?: string;
+};
+
+export function ApartmentExample({ chapterLabel = "POGLAVLJE 03" }: ApartmentExampleProps) {
   const ref = useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4>(0);
@@ -50,7 +54,7 @@ export function ApartmentExample() {
       />
 
       <div className="relative z-10">
-        <p className="text-brand-gold text-xs tracking-[0.26em] uppercase">POGLAVLJE 03</p>
+        <p className="text-brand-gold text-xs tracking-[0.26em] uppercase">{chapterLabel}</p>
         <h2 className="font-display mt-3 text-4xl text-brand-paper sm:text-5xl">Primer: Klasican stan u Beogradu - 80m2</h2>
         <p className="text-brand-paper-muted mt-3 max-w-3xl text-sm leading-relaxed sm:text-base">
           Vizuelno i finansijski najjaci dokaz vrednosti: ista kvadratura, cetiri cene, maksimalna usteda.
