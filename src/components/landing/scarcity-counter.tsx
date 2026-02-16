@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "element_landing_slots";
 const TOTAL_SLOTS = 10;
-const DEFAULT_SLOTS = 7;
-const MIN_SLOTS = 4;
+const DEFAULT_SLOTS = 4;
+const MIN_SLOTS = 0;
+const OFFER_DAYS_LEFT = 10;
 const UPDATE_INTERVAL_MS = 1000 * 60 * 60 * 8;
 
 type SlotState = {
@@ -64,20 +65,26 @@ export function ScarcityCounter() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45 }}
-      className="border-brand-gold/40 bg-brand-ink/50 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm"
+      className="border-brand-gold/40 bg-brand-ink/50 inline-flex flex-col items-start gap-2 rounded-2xl border px-4 py-3 text-sm"
     >
-      <span className="text-brand-paper-muted">Dostupno mesta:</span>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={available}
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 6 }}
-          className="text-brand-gold font-semibold"
-        >
-          {available} / {TOTAL_SLOTS}
-        </motion.span>
-      </AnimatePresence>
+      <div className="inline-flex items-center gap-2">
+        <span className="text-brand-paper-muted">Dostupno mesta:</span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={available}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            className="text-brand-gold font-semibold"
+          >
+            {available} / {TOTAL_SLOTS}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+      <p className="text-brand-paper-muted text-xs">
+        Ponuda traje jos <span className="text-brand-gold font-semibold">{OFFER_DAYS_LEFT} dana</span>. Nakon popune 4
+        mesta cena ide na 35€/m2, zatim na 40€/m2.
+      </p>
       {didUpdate ? <span className="text-brand-gold/70 text-xs">ažurirano</span> : null}
     </motion.div>
   );
