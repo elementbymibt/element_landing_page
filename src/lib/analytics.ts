@@ -13,11 +13,19 @@ declare global {
 export type AnalyticsEventName =
   | "landing_view"
   | "booking_click"
+  | "message_match_variant"
+  | "risk_reversal_view"
   | "video_play"
+  | "before_after_interaction"
   | "scroll_25"
   | "scroll_50"
   | "scroll_75"
   | "scroll_90"
+  | "sticky_cta_click"
+  | "microlead_submit"
+  | "microlead_skip"
+  | "hero_variant_a_view"
+  | "hero_variant_b_view"
   | "intake_start"
   | "intake_submit"
   | "email_popup_submit"
@@ -31,6 +39,8 @@ export type AnalyticsEventName =
 const pixelEventMap: Partial<Record<AnalyticsEventName, "ViewContent" | "Lead" | "CompleteRegistration">> = {
   landing_view: "ViewContent",
   booking_click: "Lead",
+  microlead_submit: "Lead",
+  sticky_cta_click: "Lead",
   intake_start: "Lead",
   email_popup_submit: "Lead",
   intake_submit: "CompleteRegistration",

@@ -13,6 +13,7 @@ High-conversion landing for paid traffic with two conversion paths:
 
 ## Routes
 - `/` landing page
+- `/admin/test` dev-only CRO readiness dashboard
 - `/intake/start` intake entry
 - `/intake/new` draft creator redirect
 - `/intake/[id]` full intake wizard
@@ -22,6 +23,14 @@ High-conversion landing for paid traffic with two conversion paths:
 Tracked events:
 - `landing_view`
 - `booking_click`
+- `message_match_variant`
+- `risk_reversal_view`
+- `before_after_interaction`
+- `sticky_cta_click`
+- `microlead_submit`
+- `microlead_skip`
+- `hero_variant_a_view`
+- `hero_variant_b_view`
 - `video_play`
 - `scroll_25`, `scroll_50`, `scroll_75`, `scroll_90`
 - `intake_start`
@@ -48,7 +57,12 @@ npm run dev
 
 ## Content Editing
 - Hero and chapter copy: `src/data/landing-content.ts`
-- Landing structure and chapter rendering: `src/components/landing/landing-page.tsx`
+- OfferBook (first 4 chapters): `src/components/landing/OfferBook.tsx`
+- Chapter shell and open-book layout: `src/components/landing/BookChapter.tsx`
+- Stacked cards section: `src/components/landing/StackedBulletCards.tsx`
+- Bonus gold frame page: `src/components/landing/GoldFrameBonusPage.tsx`
+- Sticky CTA engine: `src/components/landing/StickyCTA.tsx`
+- Landing assembly (all sections): `src/components/landing/landing-page.tsx`
 - Bonus section (POGLAVLJE 03): `src/data/landing-content.ts` (`chapter03Items`)
 - Booking URL: `.env.local` (`NEXT_PUBLIC_BOOKING_URL`)
 

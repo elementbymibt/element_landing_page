@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 
 import { trackEvent } from "@/src/lib/analytics";
+import { devLog } from "@/src/lib/dev-log";
 import { publicConfig } from "@/src/lib/public-config";
 
 function withAutoplay(url: string) {
@@ -23,11 +24,11 @@ export function VideoEmbed({ location }: { location: string }) {
   const src = useMemo(() => withAutoplay(publicConfig.videoEmbedUrl), []);
 
   return (
-    <div className="relative overflow-hidden rounded-[1.6rem] border border-brand-book-edge bg-brand-ink/70">
+    <div className="relative overflow-hidden rounded-[1.5rem] border border-brand-book-edge/80 bg-brand-ink/70">
       <div className="relative aspect-video w-full">
         {playing ? (
           <iframe
-            title="ÉLÉMENT video"
+            title="ELEMENT video"
             className="h-full w-full"
             src={src}
             loading="lazy"
@@ -37,10 +38,12 @@ export function VideoEmbed({ location }: { location: string }) {
           />
         ) : (
           <>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(191,154,87,0.35),transparent_50%),linear-gradient(135deg,#1f1a15_0%,#0f0d0b_55%,#1f1510_100%)]" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-              <p className="text-brand-paper-muted max-w-xl text-sm sm:text-base">
-                Pogledajte kako izgleda proces transformacije prostora kroz naš pristup.
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(191,154,87,0.35),transparent_45%),linear-gradient(135deg,#21190f_0%,#100d0b_52%,#21170f_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_45%,rgba(0,0,0,0.5)_100%)]" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+              <p className="font-display text-2xl text-brand-paper sm:text-4xl">Kako izgleda transformacija prostora</p>
+              <p className="text-brand-paper-muted mt-3 max-w-xl text-sm leading-relaxed sm:text-base">
+                Kratka prezentacija procesa od prvog uvida do finalne vizuelizacije.
               </p>
               <motion.button
                 type="button"
@@ -49,8 +52,9 @@ export function VideoEmbed({ location }: { location: string }) {
                 onClick={() => {
                   setPlaying(true);
                   trackEvent("video_play", { location });
+                  devLog("video_play", { location });
                 }}
-                className="btn-primary rounded-full px-6 py-3 text-sm font-semibold uppercase"
+                className="btn-primary mt-5 rounded-full px-7 py-3 text-sm font-semibold uppercase"
               >
                 Pokreni video
               </motion.button>

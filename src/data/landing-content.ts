@@ -1,52 +1,91 @@
-export const offerHeadline = "BESPLATNE KONSULTACIJE + 10% POPUSTA NA PROJEKAT";
+export const heroVariantContent = {
+  A: {
+    headline: "BESPLATNE KONSULTACIJE + 10% POPUSTA NA PROJEKAT",
+    subheadline:
+      "Rezervisite konsultacije sa nasim ekspertom i dobijte 3 konkretna saveta za vas prostor - potpuno besplatno.",
+    badge: "LIMITED OFFER - samo 10 mesta",
+  },
+  B: {
+    headline: "Jasan plan prostora + bonus vrednost bez doplate",
+    subheadline:
+      "Za jedan razgovor dobijate smernice koje stede vreme, budzet i greske u realizaciji.",
+    badge: "Bonus vrednost ukljucena",
+  },
+} as const;
 
-export const offerSubheadline =
-  "Rezervišite konsultacije sa našim ekspertom i dobijte 3 konkretna saveta za Vaš prostor — potpuno besplatno.";
-
-export const chapter02Items = [
-  "Kompletno idejno rešenje prostora",
-  "3D model i profesionalne render vizualizacije",
-  "2D raspored nameštaja sa ergonomijom",
-  "Pokazni raspored instalacija i rasvete",
-  "Idejni crteži nameštaja po meri",
-  "Detaljan spisak nameštaja i opreme sa dobavljačima",
-  "2 korekcije uključene",
-  "Direktnu komunikaciju sa dizajnerom",
+export const chapter02Cards = [
+  {
+    icon: "01",
+    title: "Kompletno idejno resenje",
+    text: "Koncept prostora uskladjen sa stilom zivota i funkcionalnim tokom.",
+  },
+  {
+    icon: "02",
+    title: "3D model i renderi",
+    text: "Vizuelni prikaz finalnog izgleda pre ulaska u realizaciju.",
+  },
+  {
+    icon: "03",
+    title: "2D raspored sa ergonomijom",
+    text: "Pametno pozicioniranje namestaja i zona koriscenja.",
+  },
+  {
+    icon: "04",
+    title: "Plan instalacija i rasvete",
+    text: "Pokazni raspored tacaka za precizniju pripremu radova.",
+  },
+  {
+    icon: "05",
+    title: "Idejni crtezi po meri",
+    text: "Klucni komadi namestaja definisani prema prostoru.",
+  },
+  {
+    icon: "06",
+    title: "Specifikacija dobavljaca",
+    text: "Detaljan spisak opreme i referenci za nabavku.",
+  },
+  {
+    icon: "07",
+    title: "2 korekcije ukljucene",
+    text: "Kontrolisani iterativni ciklus bez nejasnih doplata.",
+  },
+  {
+    icon: "08",
+    title: "Direktna komunikacija",
+    text: "Jedna kontakt tacka sa dizajnerom kroz ceo proces.",
+  },
 ] as const;
 
 export const chapter03Items = [
-  "Budžet po prostorijama (kontrola troškova)",
-  "Plan fazne realizacije (šta ide prvo, šta kasnije)",
-  "Mini vodič za realizaciju bez grešaka",
+  "Budzet po prostorijama (kontrola troskova)",
+  "Plan fazne realizacije (sta ide prvo, sta kasnije)",
+  "Mini vodic za realizaciju bez gresaka",
   "Dve konsultacije od po 1 sat",
   "+ Jedna dodatna revizija GRATIS",
 ] as const;
 
 export const chapter04Items = [
-  "3 konkretna saveta za Vaš prostor",
+  "3 konkretna saveta za vas prostor",
   "Analizu rasporeda",
-  "Procenu budžeta",
-  "Jasnu preporuku sledećih koraka",
+  "Procenu budzeta",
+  "Jasnu preporuku sledecih koraka",
 ] as const;
 
 export const testimonials = [
   {
-    quote:
-      "Već na konsultacijama smo dobili jasne smernice i uštedeli nedelje lutanja u realizaciji.",
+    quote: "Na konsultacijama smo dobili konkretan redosled odluka i odmah izbegli skupe greske.",
     by: "A. J.",
     city: "Beograd",
   },
   {
-    quote:
-      "Upitnik je bio detaljan, a ponuda precizna. Sve je bilo transparentno i profesionalno.",
+    quote: "Upitnik je bio detaljan, a predlog toliko jasan da smo realizaciju pokrenuli bez zastoja.",
     by: "M. P.",
     city: "Novi Sad",
   },
   {
-    quote:
-      "U prvom razgovoru smo dobili 3 konkretne odluke koje su odmah podigle kvalitet prostora.",
+    quote: "Samo jedna sesija nam je donela jasnu sliku prostora i sledecih koraka.",
     by: "I. K.",
-    city: "Niš",
+    city: "Nis",
   },
 ] as const;
 
@@ -57,10 +96,10 @@ export const faqItems = [
   },
   {
     q: "Da li je popust stvaran?",
-    a: "Da. Popust od 10% važi za limitiran broj termina u okviru aktuelne ponude.",
+    a: "Da. Popust od 10% vazi za limitiran broj termina u okviru aktuelne ponude.",
   },
   {
     q: "Da li konsultacije zaista daju vrednost?",
-    a: "Da. Tokom razgovora dobijate 3 konkretna saveta primenljiva na vaš prostor.",
+    a: "Da. Tokom razgovora dobijate 3 konkretna saveta primenljiva na vas prostor.",
   },
 ] as const;

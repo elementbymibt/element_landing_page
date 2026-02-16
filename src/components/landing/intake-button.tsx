@@ -3,15 +3,24 @@
 import Link from "next/link";
 
 import { trackEvent } from "@/src/lib/analytics";
+import { devLog } from "@/src/lib/dev-log";
 import { cn } from "@/src/lib/utils";
 
 type IntakeButtonProps = {
   className?: string;
   location: string;
   label?: string;
+  trackStickyClick?: boolean;
 };
 
-export function IntakeButton({ className, location, label = "POPUNI UPITNIK I DOBIJ PONUDU" }: IntakeButtonProps) {
+const defaultLabel = "Popuni upitnik";
+
+export function IntakeButton({
+  className,
+  location,
+  label = defaultLabel,
+  trackStickyClick = false,
+}: IntakeButtonProps) {
   return (
     <Link
       href="/intake/start"
@@ -21,6 +30,15 @@ export function IntakeButton({ className, location, label = "POPUNI UPITNIK I DO
       )}
       onClick={() => {
         trackEvent("intake_start", { location });
+
+        if (trackStickyClick) {
+          trackEvent("sticky_cta_click", { location, cta: "intake" });
+        }
+
+        devLog("intake_click", {
+          location,
+          sticky: trackStickyClick,
+        });
       }}
     >
       {label}
