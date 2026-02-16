@@ -12,7 +12,7 @@ export function StickyCTA() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
-        className="border-brand-book-edge/90 bg-brand-ink/92 fixed inset-x-0 top-0 z-[88] hidden border-b px-4 py-3 backdrop-blur md:block"
+        className="border-brand-book-edge/90 bg-brand-ink/92 fixed inset-x-0 top-8 z-[88] hidden border-b px-4 py-3 backdrop-blur md:block"
       >
         <div className="mx-auto flex max-w-4xl items-center justify-center gap-3">
           <BookingButton location="desktop_sticky" trackStickyClick className="px-5 py-2 text-xs" />

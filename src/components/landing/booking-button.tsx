@@ -17,6 +17,8 @@ type BookingButtonProps = {
   location: string;
   label?: string;
   trackStickyClick?: boolean;
+  onPress?: () => void;
+  onHover?: () => void;
 };
 
 const defaultLabel = "Zakazi besplatne konsultacije";
@@ -26,6 +28,8 @@ export function BookingButton({
   location,
   label = defaultLabel,
   trackStickyClick = false,
+  onPress,
+  onHover,
 }: BookingButtonProps) {
   const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
@@ -55,9 +59,11 @@ export function BookingButton({
       return;
     }
 
+    onPress?.();
     setOpen(true);
     setError("");
 
+    trackEvent("cta_primary_click", { location });
     trackEvent("booking_click", { location });
 
     if (trackStickyClick) {
@@ -135,6 +141,8 @@ export function BookingButton({
           className,
         )}
         onClick={openModal}
+        onMouseEnter={onHover}
+        onFocus={onHover}
       >
         {redirecting ? "Preusmeravanje..." : label}
       </button>

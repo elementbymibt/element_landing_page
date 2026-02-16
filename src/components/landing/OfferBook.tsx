@@ -8,7 +8,6 @@ import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
 import { FollowElementLinks } from "@/src/components/landing/FollowElementLinks";
 import { IntakeButton } from "@/src/components/landing/intake-button";
-import { ScarcityCounter } from "@/src/components/landing/scarcity-counter";
 import { heroVariantContent } from "@/src/data/landing-content";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
@@ -101,7 +100,9 @@ export function OfferBook() {
               {selectedHeroCopy.badge}
             </div>
 
-            <ScarcityCounter />
+            <div className="rounded-2xl border border-brand-gold/36 bg-brand-ink/52 px-4 py-3 text-sm text-brand-paper">
+              Prvih 10 klijenata aktivira premium cenu 25€/m2 + dodatnu bonus vrednost.
+            </div>
 
             <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">Jedan poziv. Jasan pravac. Bez lutanja i skupih gresaka.</p>
 
@@ -126,7 +127,7 @@ export function OfferBook() {
               {[
                 "Premium koncept + 3D vizualizacija",
                 "Raspored instalacija i rasvete",
-                "Ponuda vec od 25€/m2 za prvih 10 klijenata",
+                "3 saveta dobijate odmah na konsultacijama",
               ].map((line) => (
                 <div key={line} className="rounded-2xl border border-brand-gold/24 bg-brand-ink/45 px-4 py-3 text-sm text-brand-paper-muted">
                   {line}

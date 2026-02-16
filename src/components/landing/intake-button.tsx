@@ -11,6 +11,8 @@ type IntakeButtonProps = {
   location: string;
   label?: string;
   trackStickyClick?: boolean;
+  onPress?: () => void;
+  onHover?: () => void;
 };
 
 const defaultLabel = "Popuni upitnik";
@@ -20,6 +22,8 @@ export function IntakeButton({
   location,
   label = defaultLabel,
   trackStickyClick = false,
+  onPress,
+  onHover,
 }: IntakeButtonProps) {
   return (
     <Link
@@ -29,6 +33,8 @@ export function IntakeButton({
         className,
       )}
       onClick={() => {
+        onPress?.();
+        trackEvent("cta_secondary_click", { location });
         trackEvent("intake_start", { location });
 
         if (trackStickyClick) {
@@ -40,6 +46,8 @@ export function IntakeButton({
           sticky: trackStickyClick,
         });
       }}
+      onMouseEnter={onHover}
+      onFocus={onHover}
     >
       {label}
     </Link>
