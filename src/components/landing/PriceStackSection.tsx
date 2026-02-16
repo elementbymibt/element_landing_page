@@ -517,8 +517,7 @@ export function PriceStackSection() {
             >
               <p className="text-brand-gold text-xs tracking-[0.2em] uppercase">Otkljucajte cenu</p>
               <p className="text-brand-paper mt-2 text-sm leading-relaxed sm:text-base">
-                Unesite email i kliknite na dugme. Tek tada prikazujemo cene 40 - 35 - 30 - 25, primer projekta i
-                bonus FREE knjizice.
+                Unesite email da otkljucate prikaz cene i ponude.
               </p>
 
               <div className="mt-4 flex flex-col gap-3 sm:flex-row">

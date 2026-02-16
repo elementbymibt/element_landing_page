@@ -21,6 +21,7 @@ export type AnalyticsEventName =
   | "social_follow_click"
   | "countdown_view"
   | "countdown_expired"
+  | "booking_page_view"
   | "spots_view"
   | "spots_last3"
   | "spots_soldout"
@@ -54,6 +55,7 @@ export type AnalyticsEventName =
 const pixelEventMap: Partial<Record<AnalyticsEventName, "ViewContent" | "Lead" | "CompleteRegistration">> = {
   landing_view: "ViewContent",
   booking_click: "Lead",
+  booking_page_view: "Lead",
   microlead_submit: "Lead",
   sticky_cta_click: "Lead",
   intake_start: "Lead",

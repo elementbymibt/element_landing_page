@@ -10,7 +10,6 @@ import { EmotionalTriggerSection } from "@/src/components/landing/EmotionalTrigg
 import { FloatingSocialButtons } from "@/src/components/landing/FloatingSocialButtons";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { MicroSocialProofToast } from "@/src/components/landing/MicroSocialProofToast";
-import { OfferBook } from "@/src/components/landing/OfferBook";
 import { PriceStackSection } from "@/src/components/landing/PriceStackSection";
 import { ScrollTracker } from "@/src/components/landing/scroll-tracker";
 import { SoftEmailPopup } from "@/src/components/landing/soft-email-popup";
@@ -42,7 +41,6 @@ export function LandingPage() {
 
         <div className="mx-auto w-full max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
           <EmotionalTriggerSection />
-          <OfferBook />
           <PriceStackSection />
 
           <BookChapter

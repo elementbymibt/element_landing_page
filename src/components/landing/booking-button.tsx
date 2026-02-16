@@ -8,7 +8,6 @@ import type { FormEvent } from "react";
 import { submitMicroleadAction } from "@/src/actions/microlead";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
-import { publicConfig } from "@/src/lib/public-config";
 import { readUtmFromSearch } from "@/src/lib/utm";
 import { cn } from "@/src/lib/utils";
 
@@ -45,12 +44,31 @@ export function BookingButton({
     return readUtmFromSearch(raw);
   }, [searchParams]);
 
+  const bookingEntryUrl = useMemo(() => {
+    const params = new URLSearchParams();
+
+    if (utmPayload.campaign) {
+      params.set("utm_campaign", utmPayload.campaign);
+    }
+    if (utmPayload.content) {
+      params.set("utm_content", utmPayload.content);
+    }
+    if (utmPayload.term) {
+      params.set("utm_term", utmPayload.term);
+    }
+
+    params.set("source", location);
+
+    const query = params.toString();
+    return query ? `/booking?${query}` : "/booking";
+  }, [location, utmPayload.campaign, utmPayload.content, utmPayload.term]);
+
   const continueToBooking = () => {
     setRedirecting(true);
     setShowOverlay(true);
 
     window.setTimeout(() => {
-      window.location.assign(publicConfig.bookingUrl);
+      window.location.assign(bookingEntryUrl);
     }, 500);
   };
 

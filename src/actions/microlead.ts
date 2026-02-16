@@ -5,6 +5,7 @@ import { z } from "zod";
 import { devLog } from "@/src/lib/dev-log";
 import { sendEmail } from "@/src/lib/email/send-email";
 import { saveMicrolead } from "@/src/lib/microlead/store";
+import { siteConfig } from "@/src/lib/site-config";
 
 const inputSchema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -41,6 +42,7 @@ export async function submitMicroleadAction(input: SubmitMicroleadInput): Promis
 
   const name = parsed.data.name ?? "";
   const email = parsed.data.email ?? "";
+  const bookingEntryUrl = `${siteConfig.baseUrl}/booking`;
 
   // Non-blocking flow: continue even if user skips inputs.
   if (!name && !email) {
@@ -92,6 +94,8 @@ export async function submitMicroleadAction(input: SubmitMicroleadInput): Promis
           "",
           "Hvala vam. Nastavljate na zakazivanje termina.",
           "Nakon konsultacija dobijate 3 konkretna saveta za vas prostor.",
+          "",
+          `Link za zakazivanje: ${bookingEntryUrl}`,
         ].join("\n"),
       });
     }

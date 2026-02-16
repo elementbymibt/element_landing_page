@@ -23,6 +23,7 @@ export async function notifyIntakeSubmitted(input: {
   }
 
   const baseUrl = siteConfig.baseUrl;
+  const bookingEntryUrl = `${baseUrl}/booking`;
   const intakeUrl = `${baseUrl}/intake/${input.intake.id}`;
   const subjectCity = input.intake.basics.city || "bez-grada";
 
@@ -72,6 +73,8 @@ export async function notifyIntakeSubmitted(input: {
         "",
         "Hvala vam na popunjenom upitniku.",
         "Analiziraćemo unete podatke i kontaktirati vas sa personalizovanom ponudom i sledećim koracima.",
+        "",
+        `Ako zelite, termin mozete rezervisati odmah: ${bookingEntryUrl}`,
         "",
         "Srdačno,",
         "ÉLÉMENT (by M·I·B·T)",

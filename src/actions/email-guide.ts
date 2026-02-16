@@ -3,7 +3,7 @@
 import { z } from "zod";
 
 import { sendEmail } from "@/src/lib/email/send-email";
-import { publicConfig } from "@/src/lib/public-config";
+import { siteConfig } from "@/src/lib/site-config";
 
 export type EmailGuideActionState = {
   status: "idle" | "success" | "error";
@@ -38,6 +38,7 @@ export async function submitEmailGuideAction(
 
   const email = parsed.data.email;
   const emailTo = process.env.CONTACT_EMAIL_TO?.trim();
+  const bookingEntryUrl = `${siteConfig.baseUrl}/booking`;
 
   if (!emailTo) {
     return {
@@ -78,7 +79,7 @@ export async function submitEmailGuideAction(
         "6) Loš redosled nabavke",
         "7) Bez jasnog plana realizacije",
         "",
-        `Ako želite, odmah rezervišite konsultacije: ${publicConfig.bookingUrl}`,
+        `Ako zelite, odmah rezervisite konsultacije: ${bookingEntryUrl}`,
       ].join("\n"),
     });
 
