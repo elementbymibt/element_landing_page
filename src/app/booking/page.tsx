@@ -37,12 +37,6 @@ export default function BookingPage() {
   useEffect(() => {
     trackEvent("booking_page_view", { location: "booking_page" });
     devLog("booking_page_view", { redirectUrl });
-
-    const timeoutId = window.setTimeout(() => {
-      window.location.assign(redirectUrl);
-    }, 900);
-
-    return () => window.clearTimeout(timeoutId);
   }, [redirectUrl]);
 
   return (
@@ -53,7 +47,8 @@ export default function BookingPage() {
         <p className="text-brand-gold text-xs tracking-[0.28em] uppercase">Booking</p>
         <h1 className="font-display mt-3 text-4xl text-brand-paper sm:text-5xl">Otvaramo kalendar za zakazivanje</h1>
         <p className="text-brand-paper-muted mt-3 text-sm leading-relaxed sm:text-base">
-          Nalazite se na podstranici za zakazivanje: <span className="text-brand-gold">/booking</span>.
+          Nalazite se na podstranici za zakazivanje: <span className="text-brand-gold">/booking</span>. Kliknite na
+          dugme ispod da otvorite Calendly.
         </p>
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
