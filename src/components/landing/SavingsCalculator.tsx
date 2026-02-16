@@ -6,7 +6,8 @@ import { CountUpValue } from "@/src/components/landing/CountUpValue";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
 
-const REGULAR_RATE = 35;
+const REGULAR_RATE = 40;
+const FIRST_DROP_RATE = 35;
 const SPECIAL_RATE = 30;
 const LIMITED_RATE = 25;
 
@@ -36,8 +37,10 @@ export function SavingsCalculator() {
   }, [sqm, hasInteracted]);
 
   const regular = sqm * REGULAR_RATE;
+  const firstDrop = sqm * FIRST_DROP_RATE;
   const special = sqm * SPECIAL_RATE;
   const limited = sqm * LIMITED_RATE;
+  const savingsFirstDrop = regular - firstDrop;
   const savingsSpecial = regular - special;
   const savingsLimited = regular - limited;
 
@@ -63,22 +66,28 @@ export function SavingsCalculator() {
 
       <div className="mt-4 grid gap-2 text-sm">
         <p className="text-brand-paper-muted">
-          Regular: <CountUpValue value={regular} suffix="€" className="text-brand-paper font-semibold" />
+          Realna (40€): <CountUpValue value={regular} suffix="€" className="text-brand-paper font-semibold" />
         </p>
         <p className="text-brand-paper-muted">
-          Specijalna: <CountUpValue value={special} suffix="€" className="text-brand-gold font-semibold" />
+          Prva promo (35€): <CountUpValue value={firstDrop} suffix="€" className="text-brand-gold font-semibold" />
         </p>
         <p className="text-brand-paper-muted">
-          Limited: <CountUpValue value={limited} suffix="€" className="text-brand-gold font-semibold" />
+          Specijalna (30€): <CountUpValue value={special} suffix="€" className="text-brand-gold font-semibold" />
+        </p>
+        <p className="text-brand-paper-muted">
+          Ultra limited (25€): <CountUpValue value={limited} suffix="€" className="text-brand-gold font-semibold" />
         </p>
       </div>
 
       <div className="mt-4 rounded-2xl border border-brand-gold/35 bg-brand-bordo/40 px-4 py-3">
         <p className="text-brand-paper-muted text-sm">
-          Usteda (special): <CountUpValue value={savingsSpecial} suffix="€" className="text-brand-gold font-semibold" />
+          Usteda (35€): <CountUpValue value={savingsFirstDrop} suffix="€" className="text-brand-gold font-semibold" />
+        </p>
+        <p className="text-brand-paper-muted mt-1 text-sm">
+          Usteda (30€): <CountUpValue value={savingsSpecial} suffix="€" className="text-brand-gold font-semibold" />
         </p>
         <p className="text-brand-paper mt-1 text-sm">
-          Usteda (limited): <CountUpValue value={savingsLimited} suffix="€" className="text-brand-gold font-semibold" />
+          Usteda (25€): <CountUpValue value={savingsLimited} suffix="€" className="text-brand-gold font-semibold" />
         </p>
       </div>
     </div>

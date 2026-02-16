@@ -1,16 +1,15 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
-import { GoldFrameBonusPage } from "@/src/components/landing/GoldFrameBonusPage";
+import { FollowElementLinks } from "@/src/components/landing/FollowElementLinks";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { ScarcityCounter } from "@/src/components/landing/scarcity-counter";
-import { StackedBulletCards } from "@/src/components/landing/StackedBulletCards";
-import { chapter02Cards, chapter03Items, chapter04Items, heroVariantContent } from "@/src/data/landing-content";
+import { heroVariantContent } from "@/src/data/landing-content";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
 import { getOrCreateHeroVariant } from "@/src/lib/hero-variant";
@@ -104,10 +103,7 @@ export function OfferBook() {
 
             <ScarcityCounter />
 
-            <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">
-              Svi oglasi vode direktno na ovu stranicu sa jednim ciljem: da brzo dodjete do jasnog plana i sledeceg
-              koraka.
-            </p>
+            <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">Jedan poziv. Jasan pravac. Bez lutanja i skupih gresaka.</p>
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <BookingButton location="hero_primary" />
@@ -120,81 +116,25 @@ export function OfferBook() {
           </div>
         }
         right={
-          <div className="space-y-3">
-            {[
-              "Direktna analiza vaseg prostora",
-              "Predlog sledeca 3 poteza bez nagadjanja",
-              "Jasan okvir budzeta i prioriteta",
-              "10% popusta za limitiran broj mesta",
-            ].map((line) => (
-              <div key={line} className="rounded-2xl border border-brand-gold/25 bg-brand-ink/45 px-4 py-3 text-sm text-brand-paper-muted">
-                {line}
-              </div>
-            ))}
-          </div>
-        }
-      />
-
-      <BookChapter
-        chapter="POGLAVLJE 02"
-        title="Sta dobijate kroz projekat"
-        subtitle="Svaka stavka je prikazana kao mini karta vrednosti - bez opstih i nejasnih obecanja."
-        left={
-          <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">
-            Ovo nije klasicna lista usluge. Svaka kartica predstavlja konkretan izlaz koji skracuje put od ideje do
-            realizacije i smanjuje rizik skupljih korekcija.
-          </p>
-        }
-        right={<StackedBulletCards items={chapter02Cards} />}
-      />
-
-      <BookChapter
-        chapter="POGLAVLJE 03"
-        title="Dodatna vrednost ukljucena bez doplate"
-        subtitle="Grand finale stranica ponude sa fokusom na kontrolu troskova i sigurnu realizaciju."
-        highlight
-        left={
           <div className="space-y-4">
-            <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">
-              Bonus je ukljucen jer projekat posmatramo celovito: od kreativnog koncepta do faznog plana realizacije.
-            </p>
-            <div className="rounded-2xl border border-brand-gold/25 bg-brand-ink/45 px-4 py-3 text-sm text-brand-paper">
-              Ovaj paket je dostupan samo u okviru aktuelne kampanje i limitiranog broja termina.
+            <div className="rounded-3xl border border-brand-gold/40 bg-[linear-gradient(145deg,#3b0d18_0%,#2a0912_54%,#3b0d18_100%)] px-5 py-5 text-center shadow-[0_16px_42px_rgba(35,10,18,0.5)]">
+              <p className="font-display text-4xl leading-none text-brand-gold sm:text-5xl">ELEMENT</p>
+              <p className="text-brand-paper-muted mt-2 text-xs tracking-[0.28em] uppercase">by M | I | B | T</p>
             </div>
-          </div>
-        }
-        right={<GoldFrameBonusPage items={chapter03Items} />}
-      />
 
-      <BookChapter
-        chapter="POGLAVLJE 04"
-        title="Sta dobijate na besplatnim konsultacijama"
-        left={
-          <div className="space-y-3">
-            {chapter04Items.map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.38, delay: index * 0.06 }}
-                className="rounded-2xl border border-brand-book-edge/80 bg-brand-ink/45 px-4 py-3 text-sm text-brand-paper-muted"
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        }
-        right={
-          <div className="space-y-5">
-            <p className="text-brand-paper-muted text-sm leading-relaxed sm:text-base">
-              Nakon poziva dobijate jasnu preporuku sledecih koraka i realan okvir ulaganja, bez obaveze nastavka
-              saradnje.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <BookingButton location="chapter_04_primary" />
-              <IntakeButton location="chapter_04_secondary" />
+            <div className="grid gap-2">
+              {[
+                "Premium koncept + 3D vizualizacija",
+                "Raspored instalacija i rasvete",
+                "Ponuda vec od 25€/m2 za prvih 10 klijenata",
+              ].map((line) => (
+                <div key={line} className="rounded-2xl border border-brand-gold/24 bg-brand-ink/45 px-4 py-3 text-sm text-brand-paper-muted">
+                  {line}
+                </div>
+              ))}
             </div>
+
+            <FollowElementLinks location="hero_follow" />
           </div>
         }
       />

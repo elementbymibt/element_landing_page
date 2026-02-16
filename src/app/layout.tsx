@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 
 import { AnalyticsProviders } from "@/src/components/analytics/analytics-providers";
 import { LocaleProvider } from "@/src/components/i18n/locale-provider";
@@ -14,7 +14,7 @@ const cormorant = Cormorant_Garamond({
   weight: ["500", "600", "700"],
 });
 
-const manrope = Manrope({
+const montserrat = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -56,7 +56,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${cormorant.variable} ${manrope.variable} antialiased`}>
+      <body className={`${cormorant.variable} ${montserrat.variable} antialiased`}>
         <LocaleProvider initialLocale={locale}>
           <a
             href="#main-content"

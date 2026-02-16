@@ -18,6 +18,7 @@ export type AnalyticsEventName =
   | "video_play"
   | "before_after_interaction"
   | "calculator_interaction"
+  | "social_follow_click"
   | "scroll_25"
   | "scroll_50"
   | "scroll_75"
