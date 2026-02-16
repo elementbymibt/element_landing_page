@@ -17,6 +17,7 @@ export type AnalyticsEventName =
   | "risk_reversal_view"
   | "video_play"
   | "before_after_interaction"
+  | "calculator_interaction"
   | "scroll_25"
   | "scroll_50"
   | "scroll_75"
