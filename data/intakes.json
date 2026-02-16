@@ -1,0 +1,1070 @@
+{
+  "intakes": {
+    "410c59c0-13db-43f1-8b04-4040551dcdd0": {
+      "id": "410c59c0-13db-43f1-8b04-4040551dcdd0",
+      "status": "draft",
+      "currentStep": 12,
+      "basics": {
+        "propertyType": "apartment",
+        "city": "Pancevo",
+        "total_m2": 90,
+        "roomsInScope": [
+          "living_room",
+          "kitchen",
+          "bedroom",
+          "bathroom",
+          "dining",
+          "hallway",
+          "terrace",
+          "kids_room",
+          "office"
+        ],
+        "deadline": "6m"
+      },
+      "floorplan": {
+        "hasPlan": false,
+        "planAssetIds": [],
+        "measurementGuideSeen": false,
+        "roomMeasurements": [
+          {
+            "roomType": "living_room",
+            "width_mm": 4200,
+            "length_mm": 5200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "30e62360-aeea-46fa-a545-1648ab0fa4ac",
+                "position": "unknown",
+                "width_mm": 900
+              }
+            ],
+            "windows": [
+              {
+                "id": "a1b407bc-11f1-4523-91bb-a63c5e6d26f1",
+                "position": "unknown",
+                "width_mm": 1600,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "kitchen",
+            "width_mm": 3000,
+            "length_mm": 3600,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "c7012376-ec59-4564-80fa-d552d4b23fb0",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "c511416a-1e7d-489e-8d22-273e36f3f056",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 920
+              }
+            ]
+          },
+          {
+            "roomType": "bedroom",
+            "width_mm": 3400,
+            "length_mm": 4200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "6f0fae2b-cb05-470b-9316-26b7ebf01b4a",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "294e86c2-b74a-490b-8cbc-7d80951f4a6c",
+                "position": "unknown",
+                "width_mm": 1400,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "bathroom",
+            "width_mm": 1900,
+            "length_mm": 2500,
+            "ceiling_height_mm": 2600,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "7a66b98f-058e-485b-8dd7-f6323b4bc068",
+                "position": "unknown",
+                "width_mm": 700
+              }
+            ],
+            "windows": [
+              {
+                "id": "08442f08-9c19-40a9-b27a-b2b304af9902",
+                "position": "unknown",
+                "width_mm": 600,
+                "sill_height_mm": 1500
+              }
+            ]
+          },
+          {
+            "roomType": "dining",
+            "width_mm": 2800,
+            "length_mm": 3200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "85e63e09-038c-400c-93f6-097949687995",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "bbda40e2-579d-4ae7-a1db-654d74a53ed2",
+                "position": "unknown",
+                "width_mm": 1400,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "hallway",
+            "width_mm": 1400,
+            "length_mm": 3400,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "dba0213b-f45e-40b8-9773-e031e81a7591",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": []
+          },
+          {
+            "roomType": "terrace",
+            "width_mm": 2200,
+            "length_mm": 3500,
+            "ceiling_height_mm": 0,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "75afb005-922d-44a3-b97a-3b81a2480e43",
+                "position": "unknown",
+                "width_mm": 1000
+              }
+            ],
+            "windows": []
+          },
+          {
+            "roomType": "kids_room",
+            "width_mm": 2900,
+            "length_mm": 3600,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "0f20a29f-fa14-41ce-bde2-4092123a6cdc",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "ed4c4f50-1fc4-4b50-b505-c9345067a4f3",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "office",
+            "width_mm": 2600,
+            "length_mm": 3200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "8b1e8a4a-4bf3-4131-af87-ea47e28aa638",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "bc0d4974-ddf0-46b7-9806-9048c9ce470c",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 900
+              }
+            ]
+          }
+        ],
+        "pendingUploadLater": false
+      },
+      "lifestyle": {
+        "peopleCount": 2,
+        "kidsAgeRanges": [],
+        "pets": [
+          "none"
+        ],
+        "workFromHome": "sometimes",
+        "guests": "monthly",
+        "cookingFrequency": "weekly",
+        "storageNeed": "high",
+        "maintenancePreference": "low_maintenance"
+      },
+      "tradeoffs": {
+        "aesthetics": 43,
+        "functionality": 18,
+        "budget_control": 14,
+        "speed_timeline": 11,
+        "durability": 14
+      },
+      "style": {
+        "selectedStyles": [
+          "japandi"
+        ],
+        "usedQuiz": true,
+        "quizAnswers": {}
+      },
+      "mood": {
+        "selectedMoods": [
+          "cozy_warm",
+          "calm_minimal"
+        ]
+      },
+      "color": {
+        "brightness": "mid",
+        "temperature": "warm",
+        "palette": "warm_neutrals",
+        "wallPreference": "greige_walls"
+      },
+      "lighting": {
+        "scenarios": [
+          "layered_lighting"
+        ],
+        "dayNightPriority": "balanced",
+        "warmth": "warm",
+        "dramaLevel": 45,
+        "presetSuggestion": "AFTERNOON_WARM"
+      },
+      "furniture": {
+        "qualityTier": "mid",
+        "mixedPremiumFocus": [],
+        "restrictions": []
+      },
+      "budget": {
+        "currency": "EUR",
+        "minTotal": 30000,
+        "maxTotal": 70000,
+        "flexibleBy10": false,
+        "allocation": {
+          "kitchen": 26,
+          "living": 22,
+          "bedrooms": 20,
+          "lighting": 12,
+          "decor": 20
+        },
+        "unknownBudget": false,
+        "comfortableMonthlyPayment": 0,
+        "maxLimit": 70000,
+        "tier": "balanced"
+      },
+      "keepReplace": {
+        "keepItems": [],
+        "keepItemAssetIds": [],
+        "dimensionsNote": ""
+      },
+      "roomPreferences": [
+        {
+          "roomType": "living_room",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "livingSeating": "sectional",
+          "tvWall": true,
+          "rugPreference": true,
+          "island": null
+        },
+        {
+          "roomType": "kitchen",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "kitchenLayout": "l_shape",
+          "island": false,
+          "kitchenHandles": "handleless"
+        },
+        {
+          "roomType": "bedroom",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null,
+          "bedSize": 180,
+          "wardrobeType": "sliding"
+        },
+        {
+          "roomType": "bathroom",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "dining",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "hallway",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "terrace",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "kids_room",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "office",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        }
+      ],
+      "inspirations": {
+        "inspirationAssetIds": [],
+        "avoidAssetIds": [],
+        "tagsByAsset": {}
+      },
+      "contradictionsConfirmed": false,
+      "confidenceFlags": {
+        "measurements": "medium",
+        "budget": "high"
+      },
+      "notes": "",
+      "assets": [],
+      "createdAt": "2026-02-15T20:24:47.390Z",
+      "updatedAt": "2026-02-15T20:27:18.811Z"
+    },
+    "82fecf30-aaaf-4b53-88eb-ce083a06fccb": {
+      "id": "82fecf30-aaaf-4b53-88eb-ce083a06fccb",
+      "status": "draft",
+      "currentStep": 13,
+      "basics": {
+        "propertyType": "apartment",
+        "city": "",
+        "total_m2": 70,
+        "roomsInScope": [
+          "living_room",
+          "kitchen",
+          "bedroom"
+        ],
+        "deadline": "3m"
+      },
+      "floorplan": {
+        "hasPlan": false,
+        "planAssetIds": [],
+        "measurementGuideSeen": false,
+        "roomMeasurements": [
+          {
+            "roomType": "living_room",
+            "width_mm": 4200,
+            "length_mm": 5200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "83315bb3-fd03-4c6c-9807-84f1b85699e9",
+                "position": "unknown",
+                "width_mm": 898
+              }
+            ],
+            "windows": [
+              {
+                "id": "62fde7d0-19a8-4a5f-a6a3-5680d3d58cd9",
+                "position": "unknown",
+                "width_mm": 1600,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "kitchen",
+            "width_mm": 3000,
+            "length_mm": 3600,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "e70f38b4-4d3c-4bb1-a306-9132e176269d",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "9b1a9e01-df4a-4b34-b2ec-ae6adcf873d5",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 920
+              }
+            ]
+          },
+          {
+            "roomType": "bedroom",
+            "width_mm": 3400,
+            "length_mm": 4200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "3f62132c-21b2-4791-87b9-026b867ed497",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "43b7b688-3fff-46d1-bfd2-b7d9c984c4c0",
+                "position": "unknown",
+                "width_mm": 1400,
+                "sill_height_mm": 900
+              }
+            ]
+          }
+        ],
+        "pendingUploadLater": false
+      },
+      "lifestyle": {
+        "peopleCount": 2,
+        "kidsAgeRanges": [],
+        "pets": [
+          "none"
+        ],
+        "workFromHome": "sometimes",
+        "guests": "monthly",
+        "cookingFrequency": "weekly",
+        "storageNeed": "medium",
+        "maintenancePreference": "low_maintenance"
+      },
+      "tradeoffs": {
+        "aesthetics": 20,
+        "functionality": 25,
+        "budget_control": 20,
+        "speed_timeline": 15,
+        "durability": 20
+      },
+      "style": {
+        "selectedStyles": [
+          "warm_luxury",
+          "contemporary_classic"
+        ],
+        "usedQuiz": true,
+        "quizAnswers": {
+          "materials": "lux",
+          "silhouette": "statement",
+          "contrast": "soft"
+        }
+      },
+      "mood": {
+        "selectedMoods": [
+          "cozy_warm",
+          "calm_minimal"
+        ]
+      },
+      "color": {
+        "brightness": "mid",
+        "temperature": "neutral",
+        "palette": "warm_neutrals",
+        "wallPreference": "greige_walls"
+      },
+      "lighting": {
+        "scenarios": [
+          "layered_lighting"
+        ],
+        "dayNightPriority": "balanced",
+        "warmth": "warm",
+        "dramaLevel": 45,
+        "presetSuggestion": "AFTERNOON_WARM"
+      },
+      "furniture": {
+        "qualityTier": "mid",
+        "mixedPremiumFocus": [],
+        "restrictions": []
+      },
+      "budget": {
+        "currency": "EUR",
+        "minTotal": 30000,
+        "maxTotal": 70000,
+        "flexibleBy10": false,
+        "allocation": {
+          "kitchen": 13,
+          "living": 14,
+          "bedrooms": 13,
+          "bathroom": 13,
+          "lighting": 8,
+          "decor": 13,
+          "appliances": 13,
+          "seating": 13
+        },
+        "unknownBudget": false,
+        "comfortableMonthlyPayment": 0,
+        "maxLimit": 70000,
+        "tier": "balanced"
+      },
+      "keepReplace": {
+        "keepItems": [],
+        "keepItemAssetIds": [],
+        "dimensionsNote": ""
+      },
+      "roomPreferences": [
+        {
+          "roomType": "living_room",
+          "storagePriority": "high",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "rich",
+          "livingSeating": "sofa_armchairs",
+          "tvWall": true,
+          "rugPreference": true,
+          "island": null
+        },
+        {
+          "roomType": "kitchen",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "kitchenLayout": "l_shape",
+          "island": false,
+          "kitchenHandles": "handleless"
+        },
+        {
+          "roomType": "bedroom",
+          "storagePriority": "medium",
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null,
+          "bedSize": 180,
+          "wardrobeType": "sliding"
+        }
+      ],
+      "inspirations": {
+        "inspirationAssetIds": [],
+        "avoidAssetIds": [],
+        "tagsByAsset": {}
+      },
+      "contradictionsConfirmed": false,
+      "confidenceFlags": {
+        "measurements": "medium",
+        "budget": "high"
+      },
+      "notes": "",
+      "assets": [],
+      "createdAt": "2026-02-15T20:29:31.458Z",
+      "updatedAt": "2026-02-15T21:04:22.338Z"
+    },
+    "3743aee2-f592-4615-8cba-8d5cfe5e9756": {
+      "id": "3743aee2-f592-4615-8cba-8d5cfe5e9756",
+      "status": "submitted",
+      "currentStep": 12,
+      "basics": {
+        "propertyType": "apartment",
+        "city": "",
+        "total_m2": 70,
+        "roomsInScope": [
+          "living_room",
+          "kitchen",
+          "bedroom",
+          "dining",
+          "bathroom",
+          "kids_room",
+          "office"
+        ],
+        "roomQuantities": {
+          "living_room": 1,
+          "kitchen": 1,
+          "bedroom": 2,
+          "dining": 1,
+          "bathroom": 1,
+          "kids_room": 1,
+          "office": 1
+        },
+        "deadline": "3m"
+      },
+      "floorplan": {
+        "hasPlan": false,
+        "planAssetIds": [],
+        "measurementGuideSeen": false,
+        "roomMeasurements": [
+          {
+            "roomType": "living_room",
+            "width_mm": 4200,
+            "length_mm": 5200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "1cc3f19c-42b9-4163-ac7b-7a5000c70c6b",
+                "position": "unknown",
+                "width_mm": 900
+              }
+            ],
+            "windows": [
+              {
+                "id": "535a1a7d-5a08-4fcc-9c61-0e5d668da08d",
+                "position": "unknown",
+                "width_mm": 1600,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "kitchen",
+            "width_mm": 3000,
+            "length_mm": 3600,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "52d41903-a56f-4561-a210-40425c36f5db",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "f3f7987a-572d-472e-b376-4f6e134f97aa",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 920
+              }
+            ]
+          },
+          {
+            "roomType": "bedroom",
+            "width_mm": 3400,
+            "length_mm": 4200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "bc861491-48e8-4288-8a09-f97c0964fb92",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "05570f9f-c22e-4df7-9db0-47a795e16822",
+                "position": "unknown",
+                "width_mm": 1400,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "dining",
+            "width_mm": 2800,
+            "length_mm": 3200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "c92df63e-ad80-442c-90af-ce3295dc0e8a",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "3bc9eb3b-7fbb-481e-9250-ea066e473c27",
+                "position": "unknown",
+                "width_mm": 1400,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "bathroom",
+            "width_mm": 1900,
+            "length_mm": 2500,
+            "ceiling_height_mm": 2600,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "ff083963-daa0-4470-8912-131d84730afe",
+                "position": "unknown",
+                "width_mm": 700
+              }
+            ],
+            "windows": [
+              {
+                "id": "8eb96025-d96b-4768-83d5-744211ff60b4",
+                "position": "unknown",
+                "width_mm": 600,
+                "sill_height_mm": 1500
+              }
+            ]
+          },
+          {
+            "roomType": "kids_room",
+            "width_mm": 2900,
+            "length_mm": 3600,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "80dc234a-8294-4257-b1ce-071c64282884",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "2b861d6b-58fc-480f-b986-b5b0c31a9bd0",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 900
+              }
+            ]
+          },
+          {
+            "roomType": "office",
+            "width_mm": 2600,
+            "length_mm": 3200,
+            "ceiling_height_mm": 2700,
+            "confidence": "medium",
+            "used_defaults": true,
+            "doors": [
+              {
+                "id": "4f441913-7b1d-4075-9401-10ecab2f1b11",
+                "position": "unknown",
+                "width_mm": 800
+              }
+            ],
+            "windows": [
+              {
+                "id": "2e2cdbcc-648d-4902-b053-1be5de3632e7",
+                "position": "unknown",
+                "width_mm": 1200,
+                "sill_height_mm": 900
+              }
+            ]
+          }
+        ],
+        "pendingUploadLater": false
+      },
+      "lifestyle": {
+        "peopleCount": 2,
+        "kidsAgeRanges": [],
+        "pets": [
+          "none"
+        ],
+        "workFromHome": "sometimes",
+        "guests": "monthly",
+        "cookingFrequency": "daily",
+        "storageNeed": "medium",
+        "maintenancePreference": "low_maintenance",
+        "storageNeedScore": 7,
+        "maintenanceCareScore": 5
+      },
+      "tradeoffs": {
+        "aesthetics": 17,
+        "functionality": 17,
+        "budget_control": 21,
+        "speed_timeline": 24,
+        "durability": 21
+      },
+      "tradeoffScores": {
+        "aesthetics": 5,
+        "functionality": 5,
+        "budget_control": 6,
+        "speed_timeline": 7,
+        "durability": 6
+      },
+      "style": {
+        "selectedStyles": [
+          "warm_luxury",
+          "japandi"
+        ],
+        "usedQuiz": false,
+        "quizAnswers": {}
+      },
+      "mood": {
+        "selectedMoods": [
+          "cozy_warm",
+          "calm_minimal"
+        ],
+        "usedQuiz": false,
+        "quizAnswers": {}
+      },
+      "color": {
+        "brightness": "mid",
+        "temperature": "warm",
+        "palette": "greige_walnut",
+        "wallPreference": "greige_walls"
+      },
+      "lighting": {
+        "scenarios": [
+          "layered_lighting"
+        ],
+        "dayNightPriority": "balanced",
+        "warmth": "warm",
+        "dramaLevel": 6,
+        "presetSuggestion": "AFTERNOON_WARM"
+      },
+      "furniture": {
+        "qualityTier": "premium",
+        "mixedPremiumFocus": [],
+        "restrictions": [],
+        "usedQuiz": true,
+        "quizAnswers": {}
+      },
+      "budget": {
+        "currency": "EUR",
+        "minTotal": 30000,
+        "maxTotal": 70000,
+        "flexibleBy10": false,
+        "allocation": {
+          "kitchen": 20,
+          "living": 15,
+          "bedrooms": 12,
+          "bathroom": 10,
+          "lighting": 10,
+          "decor": 8,
+          "appliances": 13,
+          "seating": 12
+        },
+        "unknownBudget": false,
+        "comfortableMonthlyPayment": 0,
+        "maxLimit": 70000,
+        "tier": "balanced"
+      },
+      "keepReplace": {
+        "keepItems": [],
+        "keepItemAssetIds": [],
+        "dimensionsNote": ""
+      },
+      "roomPreferences": [
+        {
+          "roomType": "living_room",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "livingSeating": "sectional",
+          "tvWall": true,
+          "rugPreference": true,
+          "island": null
+        },
+        {
+          "roomType": "kitchen",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "kitchenLayout": "l_shape",
+          "island": false,
+          "kitchenHandles": "handleless"
+        },
+        {
+          "roomType": "bedroom",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null,
+          "bedSize": 180,
+          "wardrobeType": "sliding"
+        },
+        {
+          "roomType": "dining",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "bathroom",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "kids_room",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        },
+        {
+          "roomType": "office",
+          "storagePriority": "medium",
+          "activityIntensity": 6,
+          "naturalLightPriority": 6,
+          "comfortPriority": 7,
+          "mustHave": "",
+          "avoid": [],
+          "decorDensity": "balanced",
+          "tvWall": null,
+          "rugPreference": null,
+          "island": null
+        }
+      ],
+      "inspirations": {
+        "inspirationAssetIds": [],
+        "avoidAssetIds": [],
+        "tagsByAsset": {}
+      },
+      "contradictionsConfirmed": false,
+      "confidenceFlags": {
+        "measurements": "medium",
+        "budget": "high"
+      },
+      "notes": "",
+      "assets": [],
+      "createdAt": "2026-02-15T21:53:49.917Z",
+      "updatedAt": "2026-02-15T21:56:15.761Z"
+    }
+  },
+  "projects": {
+    "3743aee2-f592-4615-8cba-8d5cfe5e9756": {
+      "id": "3743aee2-f592-4615-8cba-8d5cfe5e9756",
+      "intakeId": "3743aee2-f592-4615-8cba-8d5cfe5e9756",
+      "status": "intake_completed",
+      "summary": {
+        "title": "Projekt bez naziva",
+        "city": "",
+        "propertyType": "apartment",
+        "style": [
+          "warm_luxury",
+          "japandi"
+        ],
+        "mood": [
+          "cozy_warm",
+          "calm_minimal"
+        ],
+        "palette": "greige_walnut",
+        "lightingPreset": "AFTERNOON_WARM",
+        "qualityTier": "premium",
+        "budget": {
+          "min": 30000,
+          "max": 70000,
+          "currency": "EUR"
+        },
+        "contradictions": []
+      },
+      "createdAt": "2026-02-15T21:56:15.761Z",
+      "updatedAt": "2026-02-15T21:56:15.761Z"
+    }
+  }
+}

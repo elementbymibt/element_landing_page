@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" fill="#F5F1EA"/>
+  <rect x="72" y="72" width="1056" height="576" rx="28" fill="#EFE6D8" stroke="#D8CBB8"/>
+  <text x="120" y="164" fill="#3B0D18" font-family="Arial, sans-serif" font-size="42" font-weight="700">Kako brzo izmeriti prostor (1 minut)</text>
+  <text x="120" y="220" fill="#3E332D" font-family="Arial, sans-serif" font-size="28">1) Izmeri širinu i dužinu svake sobe (mm)</text>
+  <text x="120" y="272" fill="#3E332D" font-family="Arial, sans-serif" font-size="28">2) Izmeri visinu plafona</text>
+  <text x="120" y="324" fill="#3E332D" font-family="Arial, sans-serif" font-size="28">3) Za vrata/prozore upiši poziciju + širinu</text>
+  <text x="120" y="376" fill="#3E332D" font-family="Arial, sans-serif" font-size="28">4) Ako nisi siguran, klikni "Ne znam" i nastavi</text>
+  <rect x="120" y="434" width="340" height="88" rx="44" fill="#C9A35D"/>
+  <text x="170" y="488" fill="#3B0D18" font-family="Arial, sans-serif" font-size="30" font-weight="700">Upload kasnije</text>
+  <rect x="500" y="434" width="1" height="104" fill="#D8CBB8"/>
+  <text x="540" y="488" fill="#5E5A3C" font-family="Arial, sans-serif" font-size="28">Tip: Uvek unosi u milimetrima (mm)</text>
+</svg>

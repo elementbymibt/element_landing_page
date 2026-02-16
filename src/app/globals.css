@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d0b0a;
+  --foreground: #f4efe7;
 }
 
 @theme inline {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-brand-ink: #120f0d;
+  --color-brand-paper: #f7f0e4;
+  --color-brand-paper-muted: #d6cab9;
+  --color-brand-gold: #bf9a57;
+  --color-brand-claret: #724338;
+  --color-brand-book-edge: #41342a;
+  --color-brand-burgundy: #5f2d24;
+  --color-brand-earth: #735947;
+  --color-brand-neutral-100: #f0e8dd;
+  --color-brand-neutral-300: #cbbca7;
+  --color-brand-neutral-500: #93806a;
+  --color-brand-green: #2f7152;
+  --color-brand-rose: #e48b80;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(191, 154, 87, 0.11), transparent 45%),
+    radial-gradient(circle at 92% 16%, rgba(114, 67, 56, 0.11), transparent 43%),
+    linear-gradient(180deg, #0d0b0a 0%, #0c0908 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d3b47d 0%, #bf9a57 50%, #ac8543 100%);
+  color: #130f0a;
+  border: 1px solid rgba(243, 212, 155, 0.45);
+  box-shadow: 0 8px 26px rgba(145, 106, 43, 0.24);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn-secondary {
+  background: rgba(23, 18, 14, 0.72);
+  color: #f4ecde;
+  border: 1px solid rgba(191, 154, 87, 0.34);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(191, 154, 87, 0.58);
+}
+
+.input-base {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(191, 154, 87, 0.35);
+  background: rgba(255, 255, 255, 0.95);
+  color: #1f1a16;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.input-base:focus {
+  border-color: rgba(191, 154, 87, 0.78);
+  box-shadow: 0 0 0 2px rgba(191, 154, 87, 0.2);
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }

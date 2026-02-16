@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" fill="#3B0D18"/>
+  <rect x="58" y="58" width="1084" height="604" rx="24" fill="#2A0A12" stroke="#C9A35D" stroke-opacity="0.6"/>
+  <circle cx="602" cy="360" r="84" fill="#C9A35D"/>
+  <polygon points="580,320 580,400 650,360" fill="#3B0D18"/>
+  <text x="120" y="160" fill="#F5F1EA" font-family="Arial, sans-serif" font-size="48" font-weight="700">Brzi video vodič (placeholder)</text>
+  <text x="120" y="218" fill="#E8DDCC" font-family="Arial, sans-serif" font-size="28">60-90 sekundi: osnove merenja prostora pre dizajn brief-a</text>
+</svg>
