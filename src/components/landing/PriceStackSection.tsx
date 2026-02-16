@@ -27,7 +27,12 @@ const priceBooks = [
   { title: "Plan rasvete", valuePerM2: 4, microcopy: "Scene svetla za bolji ambijent i funkciju." },
   { title: "Spisak namestaja i dobavljaca", valuePerM2: 4, microcopy: "Jasan put kupovine bez improvizacije." },
   { title: "2 revizije", valuePerM2: 4, microcopy: "Dve iteracije za fino podesavanje projekta." },
-  { title: "Besplatne konsultacije + 3 saveta", valuePerM2: 5, microcopy: "Na konsultacijama odmah dobijate 3 konkretna saveta." },
+  {
+    title: "Besplatne konsultacije + 3 saveta",
+    valuePerM2: 5,
+    microcopy: "Na konsultacijama odmah dobijate 3 konkretna saveta.",
+    freeRibbon: true,
+  },
 ] as const;
 
 const bonusBooks = [
@@ -36,6 +41,7 @@ const bonusBooks = [
   { title: "Mini vodic bez gresaka", formerValue: "4€/m2" },
   { title: "2 konsultacije po 1h", formerValue: "6€/m2" },
   { title: "+ 1 dodatna revizija", formerValue: "3€/m2" },
+  { title: "+ 3 konkretna saveta na konsultacijama", formerValue: "3€/m2" },
 ] as const;
 
 function isEmailValid(value: string) {
@@ -205,6 +211,10 @@ export function PriceStackSection() {
             </motion.form>
           ) : (
             <>
+              <div className="mt-5 inline-flex rounded-md border border-brand-gold/38 bg-[linear-gradient(120deg,#a42b2e_0%,#df4d57_100%)] px-4 py-2 text-xs font-semibold tracking-[0.14em] uppercase text-white">
+                Ponuda vazi jos 10 dana
+              </div>
+
               <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {priceBooks.map((book, index) => (
                   <BookItem
@@ -212,6 +222,7 @@ export function PriceStackSection() {
                     title={book.title}
                     valuePerM2={book.valuePerM2}
                     microcopy={book.microcopy}
+                    freeRibbon={"freeRibbon" in book ? Boolean(book.freeRibbon) : false}
                     index={index}
                     active={index < activeCount}
                     logoLabel="ELEMENT"
@@ -260,7 +271,7 @@ export function PriceStackSection() {
               </div>
 
               <div className="mt-7">
-                <p className="text-brand-gold text-xs tracking-[0.28em] uppercase">POGLAVLJE FREE 01 / U OKVIRU POGLAVLJA 02</p>
+                <p className="text-brand-gold text-xs tracking-[0.28em] uppercase">POGLAVLJE FREE 01 + DODATA VREDNOST</p>
                 <div className="mt-3">
                   <BonusStack items={bonusBooks} />
                 </div>
