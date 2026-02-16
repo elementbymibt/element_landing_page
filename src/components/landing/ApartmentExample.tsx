@@ -7,12 +7,14 @@ import { BookingButton } from "@/src/components/landing/booking-button";
 import { CountUpValue } from "@/src/components/landing/CountUpValue";
 import { IntakeButton } from "@/src/components/landing/intake-button";
 import { SavingsCalculator } from "@/src/components/landing/SavingsCalculator";
+import { SavingsOutcomeComparison } from "@/src/components/landing/SavingsOutcomeComparison";
 
 const SQM = 80;
 const REGULAR = 40 * SQM;
 const FIRST_DROP = 35 * SQM;
 const SPECIAL = 30 * SQM;
 const LIMITED = 25 * SQM;
+const TOTAL_SAVINGS = REGULAR - LIMITED;
 
 export function ApartmentExample() {
   const ref = useRef<HTMLElement | null>(null);
@@ -166,7 +168,7 @@ export function ApartmentExample() {
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display mt-6 text-6xl text-brand-gold"
               >
-                Stedite <CountUpValue value={REGULAR - LIMITED} fromValue={REGULAR - SPECIAL} suffix="€" durationMs={950} />
+                Stedite <CountUpValue value={TOTAL_SAVINGS} fromValue={REGULAR - SPECIAL} suffix="€" durationMs={950} />
               </motion.p>
 
               <p className="text-brand-paper mt-2 text-sm leading-relaxed">
@@ -178,6 +180,10 @@ export function ApartmentExample() {
 
         <div className="mt-6">
           <SavingsCalculator />
+        </div>
+
+        <div className="mt-6">
+          <SavingsOutcomeComparison savings={TOTAL_SAVINGS} />
         </div>
 
         <motion.div

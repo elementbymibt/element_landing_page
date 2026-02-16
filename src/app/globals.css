@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0b0a;
-  --foreground: #f4efe7;
+  --background: #16070e;
+  --foreground: #f5f1ea;
 }
 
 @theme inline {
@@ -24,8 +24,15 @@
   --color-brand-neutral-100: #f5f1ea;
   --color-brand-neutral-300: #efe6d8;
   --color-brand-neutral-500: #e8ddcc;
+  --color-brand-neutral-600: #f2e8d9;
+  --color-brand-neutral-700: #ede4d4;
+  --color-brand-neutral-800: #d8cbb8;
   --color-brand-green: #2f4f4a;
-  --color-brand-rose: #e48b80;
+  --color-brand-olive: #5e5a3c;
+  --color-brand-taupe: #8b8072;
+  --color-brand-coal: #3e332d;
+  --color-brand-muted-gold: #b8a06a;
+  --color-brand-rose: #d8cbb8;
 }
 
 * {
@@ -41,9 +48,9 @@ body {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 10% 5%, rgba(201, 163, 93, 0.13), transparent 42%),
-    radial-gradient(circle at 92% 16%, rgba(59, 13, 24, 0.14), transparent 46%),
-    linear-gradient(180deg, #1a070f 0%, #10060d 100%);
+    radial-gradient(circle at 18% 8%, rgba(201, 163, 93, 0.1), transparent 44%),
+    radial-gradient(circle at 82% 14%, rgba(62, 51, 45, 0.2), transparent 48%),
+    linear-gradient(180deg, #3b0d18 0%, #2b0a13 52%, #1a070e 100%);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
 }
@@ -53,10 +60,10 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #d3b47d 0%, #bf9a57 50%, #ac8543 100%);
+  background: linear-gradient(135deg, #c9a35d 0%, #b8a06a 55%, #a48d5e 100%);
   color: #130f0a;
-  border: 1px solid rgba(243, 212, 155, 0.45);
-  box-shadow: 0 8px 26px rgba(145, 106, 43, 0.24);
+  border: 1px solid rgba(201, 163, 93, 0.52);
+  box-shadow: 0 8px 26px rgba(62, 51, 45, 0.28);
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
@@ -66,31 +73,31 @@ body {
 }
 
 .btn-secondary {
-  background: rgba(23, 18, 14, 0.72);
-  color: #f4ecde;
-  border: 1px solid rgba(191, 154, 87, 0.34);
+  background: rgba(62, 51, 45, 0.46);
+  color: #f5f1ea;
+  border: 1px solid rgba(201, 163, 93, 0.34);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-secondary:hover {
   transform: translateY(-1px);
-  border-color: rgba(191, 154, 87, 0.58);
+  border-color: rgba(201, 163, 93, 0.62);
 }
 
 .input-base {
   width: 100%;
   border-radius: 999px;
-  border: 1px solid rgba(191, 154, 87, 0.35);
-  background: rgba(255, 255, 255, 0.95);
-  color: #1f1a16;
+  border: 1px solid rgba(201, 163, 93, 0.35);
+  background: rgba(245, 241, 234, 0.95);
+  color: #3e332d;
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
   outline: none;
 }
 
 .input-base:focus {
-  border-color: rgba(191, 154, 87, 0.78);
-  box-shadow: 0 0 0 2px rgba(191, 154, 87, 0.2);
+  border-color: rgba(201, 163, 93, 0.78);
+  box-shadow: 0 0 0 2px rgba(201, 163, 93, 0.2);
 }
 
 summary::-webkit-details-marker {

@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 import { BookItem } from "@/src/components/landing/BookItem";
-import { BonusStack } from "@/src/components/landing/BonusStack";
 import { BookingButton } from "@/src/components/landing/booking-button";
 import { CountUpValue } from "@/src/components/landing/CountUpValue";
 import { FollowElementLinks } from "@/src/components/landing/FollowElementLinks";
@@ -20,14 +19,6 @@ const priceBooks = [
   { title: "Spisak namestaja i dobavljaca", valuePerM2: 4, microcopy: "Jasan put kupovine bez improvizacije." },
   { title: "2 revizije", valuePerM2: 4, microcopy: "Dve iteracije za fino podesavanje projekta." },
   { title: "Besplatne konsultacije + 3 saveta", valuePerM2: 5, microcopy: "Na konsultacijama odmah dobijate 3 konkretna saveta." },
-] as const;
-
-const bonusItems = [
-  "Budzet po prostorijama",
-  "Plan fazne realizacije",
-  "Mini vodic za realizaciju bez gresaka",
-  "2 konsultacije po 1h",
-  "+ 1 dodatna revizija GRATIS",
 ] as const;
 
 export function PriceStackSection() {
@@ -77,7 +68,7 @@ export function PriceStackSection() {
           Ovo je sve sto dobijate - pre nego sto vidite cenu.
         </p>
 
-        <div className="mt-7 space-y-3 lg:hidden">
+        <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {priceBooks.map((book, index) => (
             <BookItem
               key={book.title}
@@ -89,22 +80,6 @@ export function PriceStackSection() {
               logoLabel="ELEMENT"
             />
           ))}
-        </div>
-
-        <div className="mt-8 hidden overflow-x-auto pb-2 lg:block">
-          <div className="flex min-w-max gap-4">
-            {priceBooks.map((book, index) => (
-              <BookItem
-                key={book.title}
-                title={book.title}
-                valuePerM2={book.valuePerM2}
-                microcopy={book.microcopy}
-                index={index}
-                active={index < activeCount}
-                logoLabel="ELEMENT"
-              />
-            ))}
-          </div>
         </div>
 
         <div className="mt-8 min-h-[98px]">
@@ -141,10 +116,6 @@ export function PriceStackSection() {
 
         <div className="mt-6">
           <PriceReveal startValue={40} firstDropValue={35} secondDropValue={30} finalValue={25} />
-        </div>
-
-        <div className="mt-6">
-          <BonusStack items={bonusItems} />
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">

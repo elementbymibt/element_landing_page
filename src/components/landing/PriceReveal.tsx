@@ -24,16 +24,40 @@ export function PriceReveal({ startValue, firstDropValue, secondDropValue, final
     }
 
     const timers = [
-      window.setTimeout(() => setPhase(1), 220),
-      window.setTimeout(() => setPhase(2), 1020),
-      window.setTimeout(() => setPhase(3), 1760),
-      window.setTimeout(() => setPhase(4), 2620),
+      window.setTimeout(() => setPhase(1), 180),
+      window.setTimeout(() => setPhase(2), 900),
+      window.setTimeout(() => setPhase(3), 1650),
+      window.setTimeout(() => setPhase(4), 2460),
     ];
 
     return () => {
       timers.forEach((timer) => window.clearTimeout(timer));
     };
   }, [inView]);
+
+  const rows = [
+    {
+      label: "Realna cena",
+      value: startValue,
+      from: 0,
+      visibleAt: 1,
+      strikeAt: 2,
+    },
+    {
+      label: "Prva promo cena",
+      value: firstDropValue,
+      from: startValue,
+      visibleAt: 2,
+      strikeAt: 3,
+    },
+    {
+      label: "Specijalna cena",
+      value: secondDropValue,
+      from: firstDropValue,
+      visibleAt: 3,
+      strikeAt: 4,
+    },
+  ] as const;
 
   return (
     <div
@@ -48,61 +72,36 @@ export function PriceReveal({ startValue, firstDropValue, secondDropValue, final
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(201,163,93,0.2),transparent_40%),radial-gradient(circle_at_50%_120%,rgba(0,0,0,0.72),transparent_65%)]"
       />
 
-      <div className="relative z-10 min-h-[380px]">
+      <div className="relative z-10 min-h-[420px]">
         <div className="text-center">
           <p className="text-brand-paper-muted text-xs tracking-[0.2em] uppercase">Transformacija cene</p>
 
-          <div className="mt-5 min-h-[92px]">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={phase >= 1 ? { opacity: 1, y: 0 } : undefined}
-              className="font-display relative inline-block text-6xl text-brand-paper sm:text-7xl"
-            >
-              <motion.span
-                animate={phase >= 1 ? { scale: [0.84, 1.12, 1] } : { scale: 1 }}
-                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
+          <div className="mt-5 space-y-4">
+            {rows.map((row) => (
+              <motion.div
+                key={row.label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={phase >= row.visibleAt ? { opacity: 1, y: 0 } : undefined}
+                transition={{ duration: 0.4 }}
               >
-                <CountUpValue value={startValue} fromValue={0} durationMs={850} suffix="€/m2" />
-              </motion.span>
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={phase >= 1 ? { scaleX: 1 } : undefined}
-                transition={{ duration: 0.45, delay: 0.2 }}
-                className="absolute top-1/2 left-0 h-[2px] w-full origin-left bg-brand-gold"
-              />
-            </motion.div>
+                <p className="text-brand-gold text-xs tracking-[0.2em] uppercase">{row.label}</p>
+                <div className="relative mt-1 inline-flex items-center justify-center">
+                  <motion.span
+                    animate={phase >= row.visibleAt ? { scale: [0.78, 1.14, 1] } : { scale: 1 }}
+                    transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display text-5xl leading-none text-brand-paper sm:text-6xl"
+                  >
+                    <CountUpValue value={row.value} fromValue={row.from} durationMs={840} suffix="€/m2" />
+                  </motion.span>
+                  <motion.span
+                    animate={phase >= row.strikeAt ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+                    transition={{ duration: 0.32 }}
+                    className="absolute top-1/2 left-0 h-[2px] w-full origin-left bg-brand-gold"
+                  />
+                </div>
+              </motion.div>
+            ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={phase >= 2 ? { opacity: 1, y: 0 } : undefined}
-            className="mt-1"
-          >
-            <p className="text-brand-gold text-xs tracking-[0.2em] uppercase">Prva promo cena</p>
-            <motion.p
-              animate={phase >= 2 ? { scale: [0.86, 1.11, 1] } : { scale: 1 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display mt-1 text-5xl text-brand-gold sm:text-6xl"
-            >
-              <CountUpValue value={firstDropValue} fromValue={startValue} durationMs={880} suffix="€/m2" />
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={phase >= 3 ? { opacity: 1, y: 0 } : undefined}
-            className="mt-5"
-          >
-            <p className="text-brand-gold text-xs tracking-[0.2em] uppercase">Specijalna cena</p>
-            <motion.p
-              animate={phase >= 3 ? { scale: [0.86, 1.11, 1] } : { scale: 1 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display mt-1 text-5xl text-brand-gold sm:text-6xl"
-            >
-              <CountUpValue value={secondDropValue} fromValue={firstDropValue} durationMs={900} suffix="€/m2" />
-            </motion.p>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -121,19 +120,19 @@ export function PriceReveal({ startValue, firstDropValue, secondDropValue, final
               animate={
                 phase >= 4
                   ? {
-                      scale: [0.78, 1.16, 1],
+                      scale: [0.72, 1.2, 1],
                       textShadow: [
                         "0 0 0 rgba(201,163,93,0)",
-                        "0 0 25px rgba(201,163,93,0.5)",
-                        "0 0 13px rgba(201,163,93,0.22)",
+                        "0 0 28px rgba(201,163,93,0.52)",
+                        "0 0 14px rgba(201,163,93,0.22)",
                       ],
                     }
                   : { scale: 1 }
               }
-              transition={{ duration: 0.92, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display mt-3 text-6xl text-brand-gold sm:text-7xl"
+              transition={{ duration: 0.96, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display mt-3 text-7xl text-brand-gold sm:text-8xl"
             >
-              <CountUpValue value={finalValue} fromValue={secondDropValue} durationMs={950} suffix="€/m2" />
+              <CountUpValue value={finalValue} fromValue={secondDropValue} durationMs={980} suffix="€/m2" />
             </motion.p>
 
             <p className="text-brand-paper-muted mt-2 text-xs tracking-[0.16em] uppercase">Limitirano na 10 projekata.</p>

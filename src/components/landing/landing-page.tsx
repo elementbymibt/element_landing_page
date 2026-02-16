@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import { ApartmentExample } from "@/src/components/landing/ApartmentExample";
 import { BeforeAfterSlider } from "@/src/components/landing/BeforeAfterSlider";
+import { BonusStack } from "@/src/components/landing/BonusStack";
 import { BookChapter } from "@/src/components/landing/BookChapter";
 import { BookingButton } from "@/src/components/landing/booking-button";
 import { IntakeButton } from "@/src/components/landing/intake-button";
@@ -17,6 +18,14 @@ import { VideoEmbed } from "@/src/components/landing/video-embed";
 import { faqItems, testimonials } from "@/src/data/landing-content";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
+
+const bonusBooks = [
+  { title: "Budzet po prostorijama", formerValue: "5€/m2" },
+  { title: "Plan fazne realizacije", formerValue: "4€/m2" },
+  { title: "Mini vodic bez gresaka", formerValue: "4€/m2" },
+  { title: "2 konsultacije po 1h", formerValue: "6€/m2" },
+  { title: "+ 1 dodatna revizija", formerValue: "3€/m2" },
+] as const;
 
 export function LandingPage() {
   useEffect(() => {
@@ -37,6 +46,26 @@ export function LandingPage() {
           <OfferBook />
           <PriceStackSection />
           <ApartmentExample />
+
+          <section className="relative overflow-hidden rounded-[2rem] border border-brand-gold/40 bg-[linear-gradient(145deg,#1d0810_0%,#3b0d18_52%,#1a070f_100%)] px-5 py-8 shadow-[0_30px_74px_rgba(10,3,7,0.58)] sm:px-8 sm:py-10">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(201,163,93,0.14),transparent_46%),radial-gradient(circle_at_86%_20%,rgba(62,51,45,0.2),transparent_52%)]" />
+            <div className="relative z-10">
+              <p className="text-brand-gold text-xs tracking-[0.3em] uppercase">POGLAVLJE FREE 01</p>
+              <h2 className="font-display mt-3 text-4xl text-brand-paper sm:text-5xl">Bonus knjizice bez doplate</h2>
+              <p className="text-brand-paper-muted mt-3 max-w-3xl text-sm leading-relaxed sm:text-base">
+                Svaka bonus stavka se na kraju precrtava i prelazi u FREE za prvih 10 klijenata.
+              </p>
+
+              <div className="mt-6">
+                <BonusStack items={bonusBooks} />
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <BookingButton location="bonus_books_primary" className="w-full sm:w-auto" />
+                <IntakeButton location="bonus_books_secondary" className="w-full sm:w-auto" />
+              </div>
+            </div>
+          </section>
 
           <BookChapter
             chapter="POGLAVLJE 04"
