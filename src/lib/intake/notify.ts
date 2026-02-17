@@ -1,4 +1,5 @@
 import { sendEmail } from "@/src/lib/email/send-email";
+import { buildFrom } from "@/src/lib/email/from";
 import type { IntakeDraft } from "@/src/lib/intake/types";
 import { siteConfig } from "@/src/lib/site-config";
 
@@ -16,11 +17,6 @@ export async function notifyIntakeSubmitted(input: {
 }) {
   const emailTo = process.env.CONTACT_EMAIL_TO?.trim();
   const clientEmail = input.intake.client.email?.trim().toLowerCase();
-
-  if (!emailTo) {
-    console.info("[intake] notify skipped (missing CONTACT_EMAIL_TO)");
-    return { sent: false, reason: "missing_env" as const };
-  }
 
   const baseUrl = siteConfig.baseUrl;
   const bookingEntryUrl = `${baseUrl}/booking`;
@@ -49,21 +45,37 @@ export async function notifyIntakeSubmitted(input: {
     JSON.stringify(input.intake, null, 2),
   ].join("\n");
 
-  try {
-    const adminResult = await sendEmail({
-      from: "ÉLÉMENT Intake <onboarding@resend.dev>",
-      to: emailTo,
-      replyTo: clientEmail || undefined,
-      subject: `[Intake] ${subjectCity} · ${input.intake.basics.propertyType}`,
-      text: textBody,
-    });
+  let adminSent = false;
+  let userSent = false;
+  let failureReason:
+    | "missing_env"
+    | "missing_provider"
+    | "admin_email_failed"
+    | "user_email_failed"
+    | null = null;
 
-    if (adminResult.status !== "sent") {
-      return { sent: false, reason: "missing_provider" as const };
+  if (emailTo) {
+    try {
+      const adminResult = await sendEmail({
+        from: buildFrom("ÉLÉMENT Intake"),
+        to: emailTo,
+        replyTo: clientEmail || undefined,
+        subject: `[Intake] ${subjectCity} · ${input.intake.basics.propertyType}`,
+        text: textBody,
+      });
+
+      if (adminResult.status === "sent") {
+        adminSent = true;
+      } else {
+        failureReason = "missing_provider";
+      }
+    } catch (error) {
+      console.error("[intake] admin email failed", error);
+      failureReason = "admin_email_failed";
     }
-  } catch (error) {
-    console.error("[intake] admin email failed", error);
-    return { sent: false, reason: "admin_email_failed" as const };
+  } else {
+    console.info("[intake] admin email skipped (missing CONTACT_EMAIL_TO)");
+    failureReason = "missing_env";
   }
 
   if (clientEmail) {
@@ -81,15 +93,22 @@ export async function notifyIntakeSubmitted(input: {
       ].join("\n");
 
       await sendEmail({
-        from: "ÉLÉMENT Studio <onboarding@resend.dev>",
+        from: buildFrom("ÉLÉMENT Studio"),
         to: clientEmail,
         subject: "Hvala na upitniku — ÉLÉMENT",
         text: userText,
       });
+      userSent = true;
     } catch (error) {
       console.error("[intake] user confirmation email error", error);
+      failureReason = "user_email_failed";
     }
   }
 
-  return { sent: true as const };
+  return {
+    sent: adminSent || userSent,
+    adminSent,
+    userSent,
+    reason: failureReason ?? undefined,
+  };
 }

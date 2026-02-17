@@ -3,6 +3,7 @@
 import { z } from "zod";
 
 import { devLog } from "@/src/lib/dev-log";
+import { buildFrom } from "@/src/lib/email/from";
 import { sendEmail } from "@/src/lib/email/send-email";
 import { saveMicrolead } from "@/src/lib/microlead/store";
 import { siteConfig } from "@/src/lib/site-config";
@@ -66,7 +67,7 @@ export async function submitMicroleadAction(input: SubmitMicroleadInput): Promis
 
     if (contactEmail) {
       await sendEmail({
-        from: "ÉLÉMENT Leads <onboarding@resend.dev>",
+        from: buildFrom("ÉLÉMENT Leads"),
         to: contactEmail,
         replyTo: email || undefined,
         subject: "[Microlead] Novi booking lead",
@@ -86,7 +87,7 @@ export async function submitMicroleadAction(input: SubmitMicroleadInput): Promis
 
     if (email) {
       await sendEmail({
-        from: "ÉLÉMENT Studio <onboarding@resend.dev>",
+        from: buildFrom("ÉLÉMENT Studio"),
         to: email,
         subject: "Potvrda pre zakazivanja",
         text: [

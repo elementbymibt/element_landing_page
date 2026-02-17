@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 
+import { buildFrom } from "@/src/lib/email/from";
 import { sendEmail } from "@/src/lib/email/send-email";
 import { siteConfig } from "@/src/lib/site-config";
 
@@ -49,7 +50,7 @@ export async function submitEmailGuideAction(
 
   try {
     const adminResult = await sendEmail({
-      from: "ÉLÉMENT Leads <onboarding@resend.dev>",
+      from: buildFrom("ÉLÉMENT Leads"),
       to: emailTo,
       replyTo: email,
       subject: "[Landing] Novi email lead",
@@ -64,7 +65,7 @@ export async function submitEmailGuideAction(
     }
 
     await sendEmail({
-      from: "ÉLÉMENT Studio <onboarding@resend.dev>",
+      from: buildFrom("ÉLÉMENT Studio"),
       to: email,
       subject: "Vaš mini vodič je spreman",
       text: [

@@ -51,6 +51,7 @@ npm run dev
 - Intake submit emails are sent from `src/lib/intake/notify.ts`
 - Popup lead emails are sent from server action `src/actions/email-guide.ts`
 - Shared email transport lives in `src/lib/email/send-email.ts`
+- Sender address is read from `RESEND_FROM_EMAIL` (fallback: `onboarding@resend.dev`)
 - Priority order:
   1. Resend (`RESEND_API_KEY`)
   2. SMTP fallback (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`)

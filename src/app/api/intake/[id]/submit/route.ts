@@ -53,16 +53,37 @@ export async function POST(
     const projectId = result.project?.id ?? id;
 
     // Email notifikacija je best-effort i ne sme da blokira submit flow.
+    let emailNotification: {
+      delivery: "sent" | "skipped" | "failed";
+      message: string;
+      reason?: string;
+    } = {
+      delivery: "skipped",
+      message: "Email notifikacija nije pokušana.",
+    };
+
     try {
       const notifyResult = await submitIntakeNotification({
         intake: result.intake,
         projectId,
       });
-      if (notifyResult.status === "error") {
-        console.error("[intake] submitIntakeNotification returned error", notifyResult.message);
+
+      emailNotification = {
+        delivery: notifyResult.delivery,
+        message: notifyResult.message,
+        reason: notifyResult.reason,
+      };
+
+      if (notifyResult.delivery !== "sent") {
+        console.warn("[intake] notification not fully delivered", emailNotification);
       }
     } catch (error) {
       console.error("[intake] submitIntakeNotification failed", error);
+      emailNotification = {
+        delivery: "failed",
+        message: "Slanje email notifikacije je prijavilo izuzetak.",
+        reason: error instanceof Error ? error.message : "unknown_error",
+      };
     }
 
     return NextResponse.json({
@@ -72,6 +93,7 @@ export async function POST(
       intake: result.intake,
       contradictions: result.contradictions,
       redirectTo: `/booking?from=intake&id=${id}`,
+      emailNotification,
     });
   } catch (error) {
     if (error instanceof ZodError) {
