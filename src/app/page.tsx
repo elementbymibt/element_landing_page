@@ -34,8 +34,8 @@ export default function Home() {
           <div className="space-y-5">
             <h1 className="font-display text-balance text-[1.95rem] leading-[1.08] text-[#3B0D18] sm:text-[2.35rem] lg:text-[2.9rem]">
               <span>Jedna pogrešna odluka može da vas košta</span>{" "}
-              <span className="inline-block border-b-2 border-[#C9A35D]/65 pb-0.5 text-[1.28em] leading-none text-[#C9A35D]">
-                30.000€
+              <span className="hero-impact-number inline-flex items-end rounded-md border border-[#C9A35D]/70 bg-[#3B0D18] px-2.5 py-1 text-[1.55em] leading-none text-[#F5F1EA] sm:px-3">
+                <span className="border-b-2 border-[#C9A35D]/80 pb-0.5">30.000€</span>
               </span>
               .
             </h1>
@@ -58,7 +58,7 @@ export default function Home() {
             </ul>
 
             <div className="pt-1">
-              <CtaButton location="hero" className="w-full min-w-[18rem] sm:w-auto">
+              <CtaButton location="hero" className="hero-cta-impact w-full min-w-[18rem] sm:w-auto">
                 {heroCtaText}
               </CtaButton>
               <p className="mt-2.5 text-sm text-[#8B8072]">15 minuta. Bez obaveze. Bez prodaje na silu.</p>
