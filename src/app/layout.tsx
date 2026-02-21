@@ -22,18 +22,19 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
-  title: "ÉLÉMENT | Besplatne konsultacije enterijera",
+  title: "ÉLÉMENT | Besplatne konsultacije",
   description: siteConfig.description,
   icons: {
     icon: [
-      { url: "/icon.svg?v=2", type: "image/svg+xml" },
-      { url: "/favicon.ico?v=2" },
+      { url: "/element-favicon-v3.png", type: "image/png" },
+      { url: "/element-favicon-v3.ico" },
+      { url: "/icon.svg?v=3", type: "image/svg+xml" },
     ],
-    shortcut: "/favicon.ico?v=2",
-    apple: "/icon.svg?v=2",
+    shortcut: "/element-favicon-v3.ico",
+    apple: "/element-favicon-v3.png",
   },
   openGraph: {
-    title: "ÉLÉMENT | Besplatne konsultacije enterijera",
+    title: "ÉLÉMENT | Besplatne konsultacije",
     description: siteConfig.description,
     type: "website",
     locale: "sr_RS",

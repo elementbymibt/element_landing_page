@@ -76,21 +76,29 @@ export function CalendlyLink({ children, className, location, ariaLabel, url }: 
   return (
     <a
       href={calendlyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label={ariaLabel}
       className={cn(className)}
       onClick={(event) => {
-        event.preventDefault();
-
         trackEvent("cta_calendly_click", { location, page: "landing_element" });
         trackEvent("booking_click", { location, page: "landing_element" });
         trackEvent("cta_primary_click", { location, page: "landing_element" });
 
-        if (typeof window !== "undefined" && window.Calendly?.initPopupWidget) {
-          window.Calendly.initPopupWidget({ url: calendlyUrl });
+        if (typeof window === "undefined") {
           return;
         }
 
-        window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+        if (typeof window.Calendly?.initPopupWidget === "function") {
+          try {
+            event.preventDefault();
+            window.Calendly.initPopupWidget({ url: calendlyUrl });
+            return;
+          } catch {
+            window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+            return;
+          }
+        }
       }}
     >
       {children}
