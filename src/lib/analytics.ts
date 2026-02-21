@@ -11,6 +11,7 @@ declare global {
 }
 
 export type AnalyticsEventName =
+  | "cta_calendly_click"
   | "landing_view"
   | "booking_click"
   | "message_match_variant"
@@ -53,6 +54,7 @@ export type AnalyticsEventName =
   | "documentation_download";
 
 const pixelEventMap: Partial<Record<AnalyticsEventName, "ViewContent" | "Lead" | "CompleteRegistration">> = {
+  cta_calendly_click: "Lead",
   landing_view: "ViewContent",
   booking_click: "Lead",
   booking_page_view: "Lead",
@@ -87,6 +89,32 @@ export function trackEvent(
         window.fbq("track", mapped, params);
       }
       window.fbq("trackCustom", eventName, params);
+    }
+  } catch {
+    // Analytics must stay best-effort.
+  }
+}
+
+export function trackPageView(page: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const params = {
+    page,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
+    page_title: document.title,
+  };
+
+  try {
+    track("page_view", params);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "page_view", ...params });
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "page_view", params);
     }
   } catch {
     // Analytics must stay best-effort.

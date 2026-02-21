@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 
-import { trackEvent } from "@/src/lib/analytics";
+import { trackEvent, trackPageView } from "@/src/lib/analytics";
 
 export function LandingViewTracker() {
   useEffect(() => {
-    trackEvent("landing_view", { page: "minimal_booking_landing" });
+    trackPageView("landing_element");
+    trackEvent("landing_view", { page: "landing_element" });
   }, []);
 
   return null;
 }
-
