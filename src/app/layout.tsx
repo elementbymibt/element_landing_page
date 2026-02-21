@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
+      { url: "/icon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=2" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/icon.svg",
+    shortcut: "/favicon.ico?v=2",
+    apple: "/icon.svg?v=2",
   },
   openGraph: {
     title: "ÉLÉMENT | Besplatne konsultacije enterijera",
