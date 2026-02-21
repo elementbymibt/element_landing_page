@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useEffect } from "react";
 
 import { trackEvent } from "@/src/lib/analytics";
 import { toCalendly15minUrl } from "@/src/lib/calendly";
@@ -14,24 +15,84 @@ type CalendlyLinkProps = {
   ariaLabel?: string;
 };
 
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+    __elementCalendlyListenerBound?: boolean;
+  }
+}
+
+function isCalendlyOrigin(origin: string) {
+  return /^https:\/\/([a-z0-9-]+\.)?calendly\.com$/i.test(origin);
+}
+
+function getThankYouUrl() {
+  const configured = process.env.NEXT_PUBLIC_CALENDLY_THANK_YOU_URL?.trim();
+  if (configured) {
+    return configured;
+  }
+
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/thank-you?from=calendly`;
+  }
+
+  return "/thank-you?from=calendly";
+}
+
 export function CalendlyLink({ children, className, location, ariaLabel }: CalendlyLinkProps) {
   const calendlyUrl = toCalendly15minUrl(publicConfig.bookingUrl);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (!window.Calendly && !document.getElementById("calendly-widget-script")) {
+      const script = document.createElement("script");
+      script.id = "calendly-widget-script";
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    if (!window.__elementCalendlyListenerBound) {
+      window.addEventListener("message", (event) => {
+        if (!isCalendlyOrigin(event.origin)) {
+          return;
+        }
+
+        const payload = event.data as { event?: string } | undefined;
+        if (payload?.event === "calendly.event_scheduled") {
+          window.location.assign(getThankYouUrl());
+        }
+      });
+      window.__elementCalendlyListenerBound = true;
+    }
+  }, []);
 
   return (
     <a
       href={calendlyUrl}
-      target="_blank"
-      rel="noopener noreferrer"
       aria-label={ariaLabel}
       className={cn(className)}
-      onClick={() => {
+      onClick={(event) => {
+        event.preventDefault();
+
         trackEvent("cta_calendly_click", { location, page: "landing_element" });
         trackEvent("booking_click", { location, page: "landing_element" });
         trackEvent("cta_primary_click", { location, page: "landing_element" });
+
+        if (typeof window !== "undefined" && window.Calendly?.initPopupWidget) {
+          window.Calendly.initPopupWidget({ url: calendlyUrl });
+          return;
+        }
+
+        window.open(calendlyUrl, "_blank", "noopener,noreferrer");
       }}
     >
       {children}
     </a>
   );
 }
-
