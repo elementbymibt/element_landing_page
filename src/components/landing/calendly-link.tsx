@@ -21,8 +21,6 @@ export function CalendlyLink({ children, className, location, ariaLabel, url }: 
   return (
     <a
       href={calendlyUrl}
-      target="_blank"
-      rel="noopener noreferrer"
       aria-label={ariaLabel}
       className={cn(className)}
       onClick={() => {
