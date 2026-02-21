@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
+import { CalendlyLink } from "@/src/components/landing/calendly-link";
 import { trackEvent } from "@/src/lib/analytics";
 import { devLog } from "@/src/lib/dev-log";
 import { publicConfig } from "@/src/lib/public-config";
@@ -52,15 +53,14 @@ export default function BookingPage() {
         </p>
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <a
-            href={redirectUrl}
+          <CalendlyLink
+            url={redirectUrl}
+            location="booking"
             className="btn-primary rounded-full px-6 py-3 text-sm font-semibold uppercase"
-            onClick={() => {
-              trackEvent("booking_click", { location: "booking_page_primary" });
-            }}
+            ariaLabel="Otvori kalendar za zakazivanje"
           >
             Otvori kalendar odmah
-          </a>
+          </CalendlyLink>
           <Link href="/" className="btn-secondary rounded-full px-6 py-3 text-sm font-semibold uppercase">
             Nazad na landing
           </Link>

@@ -20,8 +20,8 @@ type ThankYouPageProps = {
 
 export default async function ThankYouPage({ searchParams }: ThankYouPageProps) {
   const params = await searchParams;
-  const isCalendly = params.from?.toLowerCase() === "calendly";
-  const isIntake = params.type?.toLowerCase() === "intake" || !isCalendly;
+  const isIntake = params.type?.toLowerCase() === "intake";
+  const isCalendly = params.from?.toLowerCase() === "calendly" || !isIntake;
 
   return (
     <Container className="py-16 sm:py-24">

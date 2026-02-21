@@ -7,7 +7,7 @@ import { VideoPlaceholder } from "@/src/components/landing/video-placeholder";
 import { buildMetadata } from "@/src/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Besplatne konsultacije enterijera",
+  title: "ÉLÉMENT | Besplatne konsultacije enterijera",
   description:
     "Premium landing fokusiran na jedan cilj: zakazivanje besplatnih konsultacija za enterijer.",
   path: "/",

@@ -22,10 +22,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
-  title: {
-    default: "ÉLÉMENT | Besplatne konsultacije enterijera",
-    template: `%s | ÉLÉMENT`,
-  },
+  title: "ÉLÉMENT | Besplatne konsultacije enterijera",
   description: siteConfig.description,
   icons: {
     icon: [
