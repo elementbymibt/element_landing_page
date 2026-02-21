@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { CalendlyLink } from "@/src/components/landing/calendly-link";
 import { CtaButton } from "@/src/components/landing/cta-button";
 import { LandingViewTracker } from "@/src/components/landing/landing-view-tracker";
 import { VideoPlaceholder } from "@/src/components/landing/video-placeholder";
@@ -34,9 +35,13 @@ export default function Home() {
           <div className="order-1 space-y-5 lg:order-2">
             <h1 className="font-display text-balance text-[1.95rem] leading-[1.08] text-[#3B0D18] sm:text-[2.35rem] lg:text-[2.9rem]">
               <span>Jedna pogrešna odluka može da vas košta</span>{" "}
-              <span className="hero-impact-number inline-flex items-end rounded-md border border-[#C9A35D]/70 bg-[#3B0D18] px-2.5 py-1 text-[1.72em] leading-none text-[#F5F1EA] ring-1 ring-[#C9A35D]/30 sm:px-3">
+              <CalendlyLink
+                location="price"
+                ariaLabel="Zakažite konsultacije"
+                className="hero-impact-number relative inline-block text-[1.85em] font-semibold leading-none text-[#C9A35D] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A35D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1EA]"
+              >
                 <span className="border-b-2 border-[#C9A35D]/80 pb-0.5">30.000€</span>
-              </span>
+              </CalendlyLink>
               .
             </h1>
 

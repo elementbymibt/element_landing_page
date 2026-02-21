@@ -106,45 +106,57 @@ summary::-webkit-details-marker {
 
 @keyframes heroImpactLoop {
   0%,
-  56%,
+  62%,
   100% {
     transform: translateY(0) scale(1);
   }
-  63% {
-    transform: translateY(-2px) scale(1.11);
+  10% {
+    transform: translateY(-3px) scale(1.2);
   }
-  72% {
+  18% {
+    transform: translateY(1px) scale(0.98);
+  }
+  26% {
+    transform: translateY(0) scale(1.06);
+  }
+  34% {
     transform: translateY(0) scale(1);
   }
 }
 
 @keyframes ctaImpactLoop {
   0%,
-  52%,
+  60%,
   100% {
     transform: translateY(0) scale(1);
     box-shadow:
       0 10px 22px rgba(59, 13, 24, 0.34),
       0 0 0 1px rgba(201, 163, 93, 0.28);
   }
-  62% {
-    transform: translateY(-2px) scale(1.045);
+  10% {
+    transform: translateY(-3px) scale(1.08);
     box-shadow:
-      0 14px 30px rgba(59, 13, 24, 0.44),
-      0 0 0 1px rgba(201, 163, 93, 0.4);
+      0 14px 30px rgba(59, 13, 24, 0.46),
+      0 0 0 1px rgba(201, 163, 93, 0.45);
   }
-  70% {
+  18% {
+    transform: translateY(1px) scale(0.985);
+  }
+  28% {
+    transform: translateY(0) scale(1.04);
+  }
+  36% {
     transform: translateY(0) scale(1);
   }
 }
 
 .hero-impact-number {
-  transform-origin: center bottom;
-  animation: heroImpactLoop 2.4s cubic-bezier(0.2, 0.78, 0.2, 1) infinite;
+  transform-origin: center;
+  animation: heroImpactLoop 1.35s cubic-bezier(0.25, 0.82, 0.25, 1) infinite;
 }
 
 .hero-cta-impact {
-  animation: ctaImpactLoop 2.2s ease-in-out infinite;
+  animation: ctaImpactLoop 1.15s cubic-bezier(0.2, 0.78, 0.2, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
