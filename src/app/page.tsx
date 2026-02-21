@@ -20,21 +20,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F5F1EA] text-[#3E332D]">
       <LandingViewTracker />
-      <div className="pointer-events-none fixed left-4 top-4 z-40 select-none text-[#3B0D18]/75">
-        <p className="font-display text-xl leading-none">ÉLÉMENT</p>
-        <p className="mt-1 text-[10px] tracking-[0.2em] uppercase text-[#8B8072]">by M · I · B · T</p>
+      <div className="pointer-events-none fixed left-3 top-3 z-40 select-none text-[#3B0D18]/80 sm:left-4 sm:top-4">
+        <p className="font-display text-2xl leading-none sm:text-[1.8rem]">ÉLÉMENT</p>
+        <p className="mt-1 text-[11px] tracking-[0.2em] uppercase text-[#8B8072]">by M · I · B · T</p>
       </div>
 
       <section className="w-full border-b border-[#E2D7C4]">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 pb-10 pt-20 sm:px-6 sm:pb-12 sm:pt-20 md:px-8 md:pb-14 md:pt-20 lg:min-h-[74vh] lg:grid-cols-2 lg:items-center lg:gap-10 lg:pt-24">
-          <div>
+        <div className="mx-auto grid w-full max-w-6xl gap-7 px-4 pb-10 pt-24 sm:px-6 sm:pb-12 sm:pt-24 md:px-8 md:pb-14 md:pt-24 lg:min-h-[74vh] lg:grid-cols-2 lg:items-center lg:gap-10 lg:pt-24">
+          <div className="order-2 lg:order-1">
             <VideoPlaceholder src={process.env.NEXT_PUBLIC_HERO_VIDEO_SRC?.trim() || undefined} />
           </div>
 
-          <div className="space-y-5">
+          <div className="order-1 space-y-5 lg:order-2">
             <h1 className="font-display text-balance text-[1.95rem] leading-[1.08] text-[#3B0D18] sm:text-[2.35rem] lg:text-[2.9rem]">
               <span>Jedna pogrešna odluka može da vas košta</span>{" "}
-              <span className="hero-impact-number inline-flex items-end rounded-md border border-[#C9A35D]/70 bg-[#3B0D18] px-2.5 py-1 text-[1.55em] leading-none text-[#F5F1EA] sm:px-3">
+              <span className="hero-impact-number inline-flex items-end rounded-md border border-[#C9A35D]/70 bg-[#3B0D18] px-2.5 py-1 text-[1.72em] leading-none text-[#F5F1EA] ring-1 ring-[#C9A35D]/30 sm:px-3">
                 <span className="border-b-2 border-[#C9A35D]/80 pb-0.5">30.000€</span>
               </span>
               .
@@ -58,9 +58,11 @@ export default function Home() {
             </ul>
 
             <div className="pt-1">
-              <CtaButton location="hero" className="hero-cta-impact w-full min-w-[18rem] sm:w-auto">
-                {heroCtaText}
-              </CtaButton>
+              <div className="hero-cta-impact w-full sm:w-fit">
+                <CtaButton location="hero" className="w-full min-w-[18rem] sm:w-auto">
+                  {heroCtaText}
+                </CtaButton>
+              </div>
               <p className="mt-2.5 text-sm text-[#8B8072]">15 minuta. Bez obaveze. Bez prodaje na silu.</p>
             </div>
           </div>
@@ -80,7 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#F5F1EA] pb-28 pt-10 sm:pb-12 sm:pt-12">
+      <section className="w-full bg-[#F5F1EA] pb-36 pt-10 sm:pb-14 sm:pt-12">
         <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 text-center sm:px-6">
           <h3 className="font-display text-pretty text-3xl leading-tight text-[#3B0D18] sm:text-4xl">
             Spremni za mirnu i sigurnu odluku?
@@ -95,9 +97,11 @@ export default function Home() {
       </section>
 
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#D8CBB8] bg-[#F5F1EA]/95 p-3 backdrop-blur md:hidden">
-        <CtaButton location="bottom" className="w-full">
-          {heroCtaText}
-        </CtaButton>
+        <div className="hero-cta-impact w-full">
+          <CtaButton location="bottom" className="w-full">
+            {heroCtaText}
+          </CtaButton>
+        </div>
       </div>
     </div>
   );
