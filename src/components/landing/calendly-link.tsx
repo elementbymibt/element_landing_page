@@ -1,10 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { trackEvent } from "@/src/lib/analytics";
-import { toCalendly15minUrl } from "@/src/lib/calendly";
-import { publicConfig } from "@/src/lib/public-config";
 import { cn } from "@/src/lib/utils";
 
 type CalendlyLinkProps = {
@@ -15,12 +14,10 @@ type CalendlyLinkProps = {
   url?: string;
 };
 
-export function CalendlyLink({ children, className, location, ariaLabel, url }: CalendlyLinkProps) {
-  const calendlyUrl = toCalendly15minUrl(url || publicConfig.bookingUrl);
-
+export function CalendlyLink({ children, className, location, ariaLabel }: CalendlyLinkProps) {
   return (
-    <a
-      href={calendlyUrl}
+    <Link
+      href="/booking"
       aria-label={ariaLabel}
       className={cn(className)}
       onClick={() => {
@@ -30,6 +27,6 @@ export function CalendlyLink({ children, className, location, ariaLabel, url }: 
       }}
     >
       {children}
-    </a>
+    </Link>
   );
 }
