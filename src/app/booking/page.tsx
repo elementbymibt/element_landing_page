@@ -98,6 +98,14 @@ export default function BookingPage() {
 
   return (
     <div className="relative mx-auto min-h-screen w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+      <style jsx global>{`
+        .element-calendly-inline,
+        .element-calendly-inline iframe {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      `}</style>
+
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
@@ -126,10 +134,11 @@ export default function BookingPage() {
         </div>
 
         <div
-          ref={inlineContainerRef}
           className="overflow-hidden rounded-2xl border border-brand-gold/28 bg-brand-paper"
-          style={{ minHeight: 760 }}
-        />
+          style={{ height: "min(780px, calc(100svh - 190px))", minHeight: 540 }}
+        >
+          <div ref={inlineContainerRef} className="element-calendly-inline h-full w-full" />
+        </div>
 
         <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
