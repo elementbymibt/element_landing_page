@@ -15,6 +15,11 @@ export const metadata: Metadata = buildMetadata({
 
 export default function Home() {
   const heroCtaText = "Zakažite besplatne konsultacije";
+  const contactCountry = process.env.NEXT_PUBLIC_CONTACT_COUNTRY?.trim() || "Srbija";
+  const contactEmail =
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || process.env.CONTACT_EMAIL_TO?.trim() || "element.by.mibt@gmail.com";
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || "0659080995";
+  const contactPhoneHref = `tel:${contactPhone.replace(/[^\d+]/g, "")}`;
   // A/B-ready alternative:
   // const heroCtaText = "Donesite pravu odluku danas";
 
@@ -69,6 +74,23 @@ export default function Home() {
                 </CtaButton>
               </div>
               <p className="mt-2.5 text-sm text-[#8B8072]">15 minuta. Bez obaveze. Bez prodaje na silu.</p>
+              <div className="mt-3 flex flex-wrap gap-2 text-xs sm:text-sm">
+                <span className="inline-flex items-center rounded-full border border-[#D8CBB8] bg-[#EFE6D8] px-3 py-1.5 font-semibold text-[#8B8072]">
+                  {contactCountry}
+                </span>
+                <a
+                  href={contactPhoneHref}
+                  className="inline-flex items-center rounded-full border border-[#D8CBB8] bg-[#EFE6D8] px-3 py-1.5 font-semibold text-[#3B0D18] transition-colors hover:bg-[#EDE4D4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A35D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1EA]"
+                >
+                  {contactPhone}
+                </a>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="inline-flex items-center rounded-full border border-[#D8CBB8] bg-[#EFE6D8] px-3 py-1.5 font-semibold text-[#3B0D18] transition-colors hover:bg-[#EDE4D4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A35D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1EA]"
+                >
+                  {contactEmail}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -98,6 +120,19 @@ export default function Home() {
           <div className="mt-6">
             <CtaButton location="bottom">Donesite pravu odluku danas</CtaButton>
           </div>
+          <p className="mt-4 text-xs text-[#8B8072] sm:text-sm">
+            Kontakt ({contactCountry}):{" "}
+            <a href={contactPhoneHref} className="font-semibold text-[#3B0D18] underline decoration-[#C9A35D] underline-offset-4">
+              {contactPhone}
+            </a>
+            {" · "}
+            <a
+              href={`mailto:${contactEmail}`}
+              className="font-semibold text-[#3B0D18] underline decoration-[#C9A35D] underline-offset-4"
+            >
+              {contactEmail}
+            </a>
+          </p>
         </div>
       </section>
 
